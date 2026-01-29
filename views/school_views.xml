@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+     <!--views-->
+    <record model="ir.ui.view" id="school_course_list">
+        <field name="name">school.course.list</field>
+        <field name="model">school.course</field>
+        <field name="arch" type="xml">
+            <list string="Courses" editable="top">
+                <field name="name"/>
+                <field name="hours" invisible="name>'E'"/> <!--Es invisible si el nom comença per una lletra major a la E-->
+                <field name="manager_id"/> 
+            </list>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="school_course_form">
+        <field name="name">school.course.form</field>
+        <field name="model">school.course</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <group name="name" col="4">
+                    <!--Revisar-->
+                    <group >
+                        <field name="name"/>
+                        <field name="hours"/>
+                        <field name="manager_id"/>
+                    </group>
+                    <group>
+                        <field name="create_uid" optional="show"/>
+                        <field name="create_date" optional="show"/>
+                        <field name="write_uid" optional="hide"/>
+                        <field name="write_date" optional="hide"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="school_subject_list">
+        <field name="name">school.subject.list</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <list string="Subjects">
+                <field name="name"/>
+                <field name="hours"/>
+                <field name="create_uid" optional="show"/>
+                <field name="create_date" optional="show"/>
+                <field name="write_uid" optional="hide"/>
+                <field name="write_date" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="school_subject_form">
+        <field name="name">school.subject.form</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <form string="Subject">
+                <sheet>
+                    <group>
+                        <group colspan="2">
+                            <field name="name" placeholder="Introdueixi el nom..."/>
+                        </group>
+                        <group colspan="2" col="8">
+                            <field name="hours" placeholder="???"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="school_teacher_list">
+        <field name="name">school.teacher.list</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <list string="Teachers">
+                <field name="first_name"/>
+                <field name="last_name"/>
+                <field name="birthdate"/>
+                <field name="tin"/>
+                <field name="gender"/>
+                <field name="salary"/>
+                <field name="email"/>
+                <field name="phone"/>
+            </list>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_teacher_form">
+        <field name="name">school.teacher.form</field>
+        <field name="model">school.teacher</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <!--Es defineix quan volem que ocupi cada cosa!!!-->
+                        <!--Per defecte ocupen dues columnes.-->
+                        <!--colpan="2" és el valor per defecte-->
+                        <group string="Personal data" col="8">
+                            <field name="first_name" colspan="8" placeholder="???"/>
+                            <field name="last_name" colspan="8" placeholder="???"/>
+                            <!--El genere i l'aniversari es dividiran en dues columnes-->
+                            <field name="gender" colspan="3" placeholder="???"/>
+                            <field name="birthdate" colspan="5" placeholder="???"/>
+                        </group>
+                        <group string="Other data" col="4">
+                            <field name="email" widget="email" colspan="4" placeholder="???"/>
+                            <field name="phone" colspan="4" placeholder="???"/>
+                            <field name="tin" placeholder="???" required="True"/>
+                            <field name="salary" placeholder="???"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--Actions-->
+    <record model="ir.actions.act_window" id="school_course_action">
+        <!--és la action per invocar el contingut dels cursos-->
+        <field name="name">Courses</field>
+        <field name="res_model">school.course</field>
+        <field name="view_mode">list,form</field>
+        <!--Si encara no hem fet la vista 'form', Odoo crea una per defecte!!!-->
+    </record>
+
+    <record model="ir.actions.act_window" id="school_subject_action">
+        <field name="name">Subjects</field>
+        <field name="res_model">school.subject</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="school_teacher_action">
+        <field name="name">Teachers</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+
+    <!--Menus-->
+    <!--Primer creem el menú principal-->
+    <menuitem name="School" id="menu_root"/>
+    <!--Resta de menus-->
+    <menuitem name="Configuration" id="menu_configuration" parent="menu_root" sequence="99"/>
+   
+    <menuitem name="Courses" id="menu_courses" parent="menu_configuration"
+              action="school_course_action"/>
+
+    <menuitem name="Subjects" id="menu_subjects" parent="menu_configuration"
+              action="school_subject_action"/>
+
+    <menuitem name="Teachers" id="menu_teachers" parent="menu_root" sequence="50"
+              action="school_teacher_action"/>
+
+</odoo>

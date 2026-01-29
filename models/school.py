@@ -14,10 +14,12 @@ class SchoolCourse(models.Model):
 class SchoolSubject(models.Model):
     _name = 'school.subject'
     _description = 'Subject Management'
+    _rec_name = 'first_name'
 
     name = fields.Char('Name', size=60, required=True)
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
+
 
 class SchoolTeacher(models.Model):
     _name = 'school.teacher'
@@ -31,3 +33,7 @@ class SchoolTeacher(models.Model):
     salary = fields.Integer('Salary')
     email = fields.Char('eMail', size=60, required=True)
     phone = fields.Char('Phone')
+    course_ids = fields.One2many('school.course', 'manager_id', string='Courses')    #_rec_name= "first_name"
+
+
+    

@@ -8,15 +8,15 @@ class SchoolCourse(models.Model):
     name = fields.Char('Name', size=60, required=True)
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
+    #relacio Many to One: MANY CURSOS pot tenir ONE teacher. un teacher pot tenir molts cursos.
     manager_id = fields.Many2one('school.teacher', 'Manager') #No és required perquè és 0..1
 
 
 class SchoolSubject(models.Model):
     _name = 'school.subject'
     _description = 'Subject Management'
-    _rec_name = 'first_name'
 
-    name = fields.Char('Name', size=60, required=True)
+    name = fields.Char('Name', size=60, required=True, translate=True) #S'ha de poder traduir
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
 
@@ -24,6 +24,7 @@ class SchoolSubject(models.Model):
 class SchoolTeacher(models.Model):
     _name = 'school.teacher'
     _description = 'Teacher Management'
+    _rec_name = 'last_name' #Per defecte és Name, però no tenim aquest camp
 
     first_name = fields.Char('First Name', size=30, required=True)
     last_name = fields.Char('Last Name', size=40, required=True)
@@ -33,6 +34,7 @@ class SchoolTeacher(models.Model):
     salary = fields.Integer('Salary')
     email = fields.Char('eMail', size=60, required=True)
     phone = fields.Char('Phone')
+    #Relacio One2Many: ONE TEACHER pot tenir MANY cursos. Un curs pot tenir un teacher. 
     course_ids = fields.One2many('school.course', 'manager_id', string='Courses')    #_rec_name= "first_name"
 
 

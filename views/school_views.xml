@@ -19,7 +19,7 @@
         <field name="arch" type="xml">
             <form string="Course">
                 <group name="name" col="4">
-                    <!--Revisar-->
+                    <!--Revisar separators-->
                     <group >
                         <field name="name"/>
                         <field name="hours"/>
@@ -57,11 +57,11 @@
         <field name="arch" type="xml">
             <form string="Subject">
                 <sheet>
-                    <group>
-                        <group colspan="2">
+                    <group col="4">
+                        <group colspan="3">
                             <field name="name" placeholder="Introdueixi el nom..."/>
                         </group>
-                        <group colspan="2" col="8">
+                        <group colspan="1"><!-- col="8"-->
                             <field name="hours" placeholder="???"/>
                         </group>
                     </group>
@@ -83,6 +83,8 @@
                 <field name="salary"/>
                 <field name="email"/>
                 <field name="phone"/>
+                <!--Amb One2Many ara podem veure els cursos de cada professor-->
+                <field name="course_ids" optional="hide"/>
             </list>
         </field>
     </record>
@@ -102,11 +104,11 @@
                             <field name="last_name" colspan="8" placeholder="???"/>
                             <!--El genere i l'aniversari es dividiran en dues columnes-->
                             <field name="gender" colspan="3" placeholder="???"/>
-                            <field name="birthdate" colspan="5" placeholder="???"/>
+                            <field name="birthdate" colspan="5" placeholder="???" required="0"/>
                         </group>
                         <group string="Other data" col="4">
                             <field name="email" widget="email" colspan="4" placeholder="???"/>
-                            <field name="phone" colspan="4" placeholder="???"/>
+                            <field name="phone" colspan="4" placeholder="???" required="0"/>
                             <field name="tin" placeholder="???" required="True"/>
                             <field name="salary" placeholder="???"/>
                         </group>
@@ -120,7 +122,6 @@
                                 </list>
                             </field> 
                         </group>
-                        <!--todo:modificar model-->
                     </group>
                 </sheet>
             </form>

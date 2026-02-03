@@ -19,6 +19,8 @@ class SchoolSubject(models.Model):
     name = fields.Char('Name', size=60, required=True, translate=True) #S'ha de poder traduir
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
+    teacher_ids = fields.Many2many('school.teacher', 'school_teacher_subject_rel', 'subject_id', 'teacher_id', string='Teachers', readonly=True)
+
 
 
 class SchoolTeacher(models.Model):
@@ -36,6 +38,7 @@ class SchoolTeacher(models.Model):
     phone = fields.Char('Phone')
     #Relacio One2Many: ONE TEACHER pot tenir MANY cursos. Un curs pot tenir un teacher. 
     course_ids = fields.One2many('school.course', 'manager_id', string='Courses')    #_rec_name= "first_name"
+    subject_ids = fields.Many2many('school.subjects', 'school_teacher_subject_rel', 'teacher_id', 'subject_id', string='Subjects', readonly=True)
 
 
     

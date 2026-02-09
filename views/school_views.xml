@@ -7,7 +7,8 @@
         <field name="arch" type="xml">
             <list string="Courses" editable="top">
                 <field name="name" />
-                <field name="hours" invisible="name>'E'" /> <!--Es invisible si el nom comença per una lletra major a la E-->
+                <field name="hours" invisible="name>'E'" />
+                <!--PROVES: Es invisible si el nom comença per una lletra major a la E-->
                 <field name="manager_id" />
             </list>
         </field>
@@ -108,7 +109,8 @@
         </field>
     </record>
 
-    <!--TODO:En el formulari de professorat es pugui veure/assignar assignatures, però no crear/eliminar En el formulari de professorat es pugui veure/assignar cursos gestionats, però no crear/eliminar-->
+    <!--En el formulari de professorat es pugui veure/assignar assignatures, però no crear/eliminar -->
+    <!--En el formulari de professorat es pugui veure/assignar cursos gestionats, però no crear/eliminar-->
     <record model="ir.ui.view" id="view_teacher_form">
         <field name="name">school.teacher.form</field>
         <field name="model">school.teacher</field>

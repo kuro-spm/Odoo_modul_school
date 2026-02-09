@@ -17,7 +17,7 @@ class SchoolCourse(models.Model):
         column2='subject_id',
         string='Subjects', readonly=True
     )
-    
+    thematic_id = fields.Many2one('school.thematic', 'Thematic')
 
 class SchoolSubject(models.Model):
     _name = 'school.subject'

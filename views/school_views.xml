@@ -7,9 +7,11 @@
         <field name="arch" type="xml">
             <list string="Courses" editable="top">
                 <field name="name" />
-                <field name="hours" invisible="name>'E'" />
+                <field name="hours" />
+                <!--invisible="name>'E'"-->
                 <!--PROVES: Es invisible si el nom comença per una lletra major a la E-->
                 <field name="manager_id" />
+                <field name="thematic_id" />
             </list>
         </field>
     </record>

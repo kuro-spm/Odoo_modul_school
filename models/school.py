@@ -49,6 +49,6 @@ class SchoolTeacher(models.Model):
     #comodel_name= nom de la relacio a la que apunta
     #relation = nom de la nova taula que es crea i que conté la relació
     #column1 i column2 han d'estar girades respecte la many2many definida a teacher!!
-
+    #20260209
 
     

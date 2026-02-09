@@ -26,8 +26,10 @@ class SchoolSubject(models.Model):
     name = fields.Char('Name', size=60, required=True, translate=True) #S'ha de poder traduir
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
-    teacher_ids = fields.Many2many('school.teacher', 'school_teacher_subject_rel', 'subject_id', 'teacher_id', string='Teachers', readonly=True)
-    course_ids = fields.Many2many('school.course', 'school_course_subject_rel', 'course_id', 'subject_id', readonly=True)
+    teacher_ids = fields.Many2many('school.teacher', 'school_teacher_subject_rel',
+                                   'subject_id', 'teacher_id', string='Teachers', readonly=True)
+    course_ids = fields.Many2many('school.course', 'school_course_subject_rel',
+                                  'subject_id', 'course_id', readonly=True)
 
 
 class SchoolTeacher(models.Model):
@@ -52,9 +54,11 @@ class SchoolTeacher(models.Model):
         column2='subject_id',
         string='Subjects'
     )
-    #comodel_name= nom de la relacio a la que apunta
+    #comodel_name= nom de la relació a la que apunta
     #relation = nom de la nova taula que es crea i que conté la relació
     #column1 i column2 han d'estar girades respecte la many2many definida a teacher!!
     #20260209
 
     
+class SchoolThematic(models.Model):
+    _name = 'school.thematic'

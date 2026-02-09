@@ -8,7 +8,7 @@
             <list string="Courses" editable="top">
                 <field name="name"/>
                 <field name="hours" invisible="name>'E'"/> <!--Es invisible si el nom comença per una lletra major a la E-->
-                <field name="manager_id"/> 
+                <field name="manager_id"/>
             </list>
         </field>
     </record>
@@ -63,7 +63,7 @@
                             <field name="name" placeholder="Introdueixi el nom..."/>
                             <field name="hours" placeholder="???"/>
                         </group>
-                        
+
         <!--En el formulari d’assignatures es pugui veure els cursos on apareix, però no
         assignar/crear/eliminar cursos-->
                         <group string="Courses"><!-- colspan="1"-->
@@ -147,11 +147,11 @@ crear/eliminar-->
                         </field>
                         </page>
                         <page name="courses" string="Courses managed">
-                                <!--Li treiem el nom perque no estigui repetit-->
+                                <!--Li treiem el nom perquè no estigui repetit-->
                                     <!--string="Courses Managed"-->
-                            <field name="course_id" readonly="0" nolabel="1" widget="many2many">
+                            <field name="course_ids" readonly="0" nolabel="1" widget="many2many">
                                 <!--nolabel="1" per treure-li la etiqueta-->
-                                <!--Si no definim una list aqui, surten tots els camps 
+                                <!--Si no definim una list aqui, surten tots els camps
                                 de la primera list de cursos que trobi.-->
                                     <list>
                                         <!--Si volguessim que no es pugui crear cursos nous, create="0"-->
@@ -159,21 +159,18 @@ crear/eliminar-->
                                         <field name="name"></field>
                                         <field name="hours"></field>
                                     </list>
-                                <!--Perque no surti el formulari per defecte al crear un nou curs, 
+                                <!--Perque no surti el formulari per defecte al crear un nou curs,
                                 hem de crear un formulari personalitzat-->
                                 <!--TUTTURU~-->
                                     <form >
                                         <group>
                                             <field name="name"></field>
-                                            <field name="hours"></field>    
+                                            <field name="hours"></field>
                                         </group>
                                     </form>
-                                </field> 
+                                </field>
                             </page>
                         </notebook>
-                        
-                        
-                    
                 </sheet>
             </form>
         </field>
@@ -200,6 +197,11 @@ crear/eliminar-->
         <field name="view_mode">list,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="school_thematic_action">
+        <field name="name">Thematic</field>
+        <field name="res_model">school.thematic</field>
+        <field name="view_mode">list,form</field>
+    </record>
 
 
     <!--Menus-->
@@ -207,7 +209,7 @@ crear/eliminar-->
     <menuitem name="School" id="menu_root"/>
     <!--Resta de menus-->
     <menuitem name="Configuration" id="menu_configuration" parent="menu_root" sequence="99"/>
-   
+
     <menuitem name="Courses" id="menu_courses" parent="menu_configuration" action="school_course_action"/>
 
     <menuitem name="Subjects" id="menu_subjects" parent="menu_configuration" action="school_subject_action"/>

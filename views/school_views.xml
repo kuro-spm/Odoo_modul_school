@@ -7,15 +7,13 @@
         <field name="arch" type="xml">
             <list string="Courses" editable="top">
                 <field name="name" />
-                <field name="hours" invisible="name>'E'" /> <!--Es
-                invisible si el nom comença per una lletra major a la E-->
+                <field name="hours" invisible="name>'E'" /> <!--Es invisible si el nom comença per una lletra major a la E-->
                 <field name="manager_id" />
             </list>
         </field>
     </record>
 
-    <!--Todo:
-    es pugui veure/assignar/crear assignatures en school_course_form-->
+    <!--Todo: es pugui veure/assignar/crear assignatures en school_course_form-->
     <record model="ir.ui.view" id="school_course_form">
         <field name="name">school.course.form</field>
         <field name="model">school.course</field>
@@ -66,21 +64,16 @@
                             <field name="hours" placeholder="???" />
                         </group>
 
-                        <!--En
-                        el formulari d’assignatures es pugui veure els cursos on apareix, però no
-        assignar/crear/eliminar cursos-->
+                        <!--En el formulari d’assignatures es pugui veure els cursos on apareix, però no assignar/crear/eliminar cursos-->
                         <group string="Courses"><!-- colspan="1"-->
-                            <field name="courses_ids" nolabel="1" readonly="1">
+                            <field name="course_ids" nolabel="1" readonly="1">
                                 <list create="0" delete="0">
                                     <field name="name" />
                                     <field name="hours" />
                                 </list>
                             </field>
                         </group>
-                        <!--En
-                        el formulari d’assignatures es pugui veure el professorat que la pot
-                        impartir, però sense
-        assignar/crear/eliminar professorat-->
+                        <!--En el formulari d’assignatures es pugui veure el professorat que la pot impartir, però sense assignar/crear/eliminar professorat-->
                         <group string="Authorized Teachers">
                             <field name="teacher_ids" nolabel="1" readonly="1">
                                 <list create="0" delete="0">
@@ -109,17 +102,13 @@
                 <field name="salary" />
                 <field name="email" />
                 <field name="phone" />
-                <!--Amb
-                One2Many ara podem veure els cursos de cada professor-->
+                <!--Amb One2Many ara podem veure els cursos de cada professor-->
                 <field name="course_ids" optional="hide" />
             </list>
         </field>
     </record>
 
-    <!--TODO:En
-    el formulari de professorat es pugui veure/assignar assignatures, però no crear/eliminar
-En el formulari de professorat es pugui veure/assignar cursos gestionats, però no
-crear/eliminar-->
+    <!--TODO:En el formulari de professorat es pugui veure/assignar assignatures, però no crear/eliminar En el formulari de professorat es pugui veure/assignar cursos gestionats, però no crear/eliminar-->
     <record model="ir.ui.view" id="view_teacher_form">
         <field name="name">school.teacher.form</field>
         <field name="model">school.teacher</field>
@@ -127,17 +116,13 @@ crear/eliminar-->
             <form>
                 <sheet>
                     <group>
-                        <!--Es
-                        defineix quan volem que ocupi cada cosa!!!-->
-                        <!--Per
-                        defecte ocupen dues columnes.-->
-                        <!--colpan="2"
-                        és el valor per defecte-->
+                        <!--Es defineix quan volem que ocupi cada cosa!!!-->
+                        <!--Per defecte ocupen dues columnes.-->
+                        <!--colpan="2" és el valor per defecte-->
                         <group string="Personal data" col="8">
                             <field name="first_name" colspan="8" placeholder="???" />
                             <field name="last_name" colspan="8" placeholder="???" />
-                            <!--El
-                            genere i l'aniversari es dividiran en dues columnes-->
+                            <!--El genere i l'aniversari es dividiran en dues columnes-->
                             <field name="gender" colspan="3" placeholder="???" />
                             <field name="birthdate" colspan="5" placeholder="???" required="0" />
                         </group>
@@ -158,27 +143,18 @@ crear/eliminar-->
                             </field>
                         </page>
                         <page name="courses" string="Courses managed">
-                            <!--Li
-                            treiem el nom perque no estigui repetit-->
-                            <!--string="Courses
-                            Managed"-->
-                            <field name="course_id" readonly="0" nolabel="1" widget="many2many">
-                                <!--nolabel="1"
-                                per treure-li la etiqueta-->
-                                <!--Si
-                                no definim una list aqui, surten tots els camps 
-                                de la primera list de cursos que trobi.-->
+                            <!--Li treiem el nom perquè no estigui repetit-->
+                            <!--string="Courses Managed"-->
+                            <field name="course_ids" readonly="0" nolabel="1" widget="many2many">
+                                <!--nolabel="1" per treure-li la etiqueta-->
+                                <!--Si no definim una list aqui, surten tots els camps de la primera list de cursos que trobi.-->
                                 <list>
-                                    <!--Si
-                                    volguessim que no es pugui crear cursos nous, create="0"-->
-                                    <!--Aqui
-                                    definim els camps de cursos que volem que surtin-->
+                                    <!--Si volguessim que no es pugui crear cursos nous, create="0"-->
+                                    <!--Aqui definim els camps de cursos que volem que surtin-->
                                     <field name="name"></field>
                                     <field name="hours"></field>
                                 </list>
-                                <!--Perque
-                                no surti el formulari per defecte al crear un nou curs, 
-                                hem de crear un formulari personalitzat-->
+                                <!--Perque no surti el formulari per defecte al crear un nou curs, hem de crear un formulari personalitzat-->
                                 <!--TUTTURU~-->
                                 <form>
                                     <group>
@@ -196,13 +172,11 @@ crear/eliminar-->
 
     <!--Actions-->
     <record model="ir.actions.act_window" id="school_course_action">
-        <!--és
-        la action per invocar el contingut dels cursos-->
+        <!--és la action per invocar el contingut dels cursos-->
         <field name="name">Courses</field>
         <field name="res_model">school.course</field>
         <field name="view_mode">list,form</field>
-        <!--Si
-        encara no hem fet la vista 'form', Odoo crea una per defecte!!!-->
+        <!--Si encara no hem fet la vista 'form', Odoo crea una per defecte!!!-->
     </record>
 
     <record model="ir.actions.act_window" id="school_subject_action">
@@ -217,13 +191,17 @@ crear/eliminar-->
         <field name="view_mode">list,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="school_thematic_action">
+        <field name="name">Thematic</field>
+        <field name="res_model">school.thematic</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
 
     <!--Menus-->
-    <!--Primer
-    creem el menú principal-->
+    <!--Primer creem el menú principal-->
     <menuitem name="School" id="menu_root" />
-    <!--Resta
-    de menus-->
+    <!--Resta de menus-->
     <menuitem name="Configuration" id="menu_configuration" parent="menu_root" sequence="99" />
 
     <menuitem name="Courses" id="menu_courses" parent="menu_configuration"

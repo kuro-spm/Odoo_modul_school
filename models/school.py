@@ -62,3 +62,4 @@ class SchoolTeacher(models.Model):
     
 class SchoolThematic(models.Model):
     _name = 'school.thematic'
+    _description = 'Thematic Management'

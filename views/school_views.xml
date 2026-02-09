@@ -25,7 +25,7 @@
                         <field name="name" />
                         <field name="hours" />
                         <field name="manager_id" />
-                        <field name ="thematic_id"/>
+                        <field name="thematic_id" />
                     </group>
                     <group>
                         <field name="create_uid" optional="show" />
@@ -170,6 +170,17 @@
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="school_thematic_list">
+        <field name="name">school.thematic.list</field>
+        <field name="model">school.thematic</field>
+        <field name="arch" type="xml">
+            <list string="Thematics" editable="top">
+                <field name="name" />
+                <field name="course_ids" widget="many2many_tags" string="Courses included" />
+            </list>
         </field>
     </record>
 

@@ -47,7 +47,7 @@ class SchoolTeacher(models.Model):
     email = fields.Char('eMail', size=60, required=True)
     phone = fields.Char('Phone')
     #Relacio One2Many: ONE TEACHER pot tenir MANY cursos. Un curs pot tenir un teacher. 
-    course_ids = fields.One2many('school.course', 'manager_id', string='Courses')    #_rec_name= "first_name"
+    course_ids = fields.One2many('school.course', 'manager_id', string='Courses', readonly=True)    #_rec_name= "first_name"
     subject_ids = fields.Many2many(
         comodel_name='school.subject',
         relation='school_teacher_subject_rel', 
@@ -67,4 +67,4 @@ class SchoolThematic(models.Model):
 
     name = fields.Char('Name', required=True)
 
-    course_ids = fields.One2many('school.course', 'thematic_id', string='Courses')
+    course_ids = fields.One2many('school.course', 'thematic_id', string='Courses', readonly=True)

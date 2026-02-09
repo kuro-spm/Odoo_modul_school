@@ -39,8 +39,16 @@ class SchoolTeacher(models.Model):
     phone = fields.Char('Phone')
     #Relacio One2Many: ONE TEACHER pot tenir MANY cursos. Un curs pot tenir un teacher. 
     course_ids = fields.One2many('school.course', 'manager_id', string='Courses')    #_rec_name= "first_name"
-    subject_ids = fields.Many2many('school.subjects', 'school_teacher_subject_rel', 'teacher_id', 'subject_id', string='Subjects', readonly=True)
-
+    subject_ids = fields.Many2many(
+        comodel_name='school.subject',
+        relation='school_course_subject_rel',  # Nom comú per la taula de la relacio
+        column1='course_id',
+        column2='subject_id',
+        string='Subjects'
+    )
+    #comodel_name= nom de la relacio a la que apunta
+    #relation = nom de la nova taula que es crea i que conté la relació
+    #column1 i column2 han d'estar girades respecte la many2many definida a teacher!!
 
 
     

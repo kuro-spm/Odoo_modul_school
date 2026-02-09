@@ -10,7 +10,7 @@ class SchoolCourse(models.Model):
     active = fields.Boolean('Active', default=True)
     #relacio Many to One: MANY CURSOS pot tenir ONE teacher. un teacher pot tenir molts cursos.
     manager_id = fields.Many2one('school.teacher', 'Manager') #No és required perquè és 0..1
-    subject_ids = fields.Many2Many('school.subject', 'Subjects', readonly=True)
+    subject_ids = fields.Many2many('school.subject', 'Subjects', readonly=True)
     
 
 class SchoolSubject(models.Model):
@@ -21,7 +21,7 @@ class SchoolSubject(models.Model):
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
     teacher_ids = fields.Many2many('school.teacher', 'school_teacher_subject_rel', 'subject_id', 'teacher_id', string='Teachers', readonly=True)
-
+    course_ids = fields.Many2many('school.course', 'school_courses_subject_rel', 'course_id', 'subject_id', readonly=True)
 
 
 class SchoolTeacher(models.Model):

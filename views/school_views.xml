@@ -67,7 +67,7 @@
         <!--En el formulari d’assignatures es pugui veure els cursos on apareix, però no
         assignar/crear/eliminar cursos-->
                         <group string="Courses"><!-- colspan="1"-->
-                            <field name="courses_ids" nolabel="1" readonly="1">
+                            <field name="course_ids" nolabel="1" readonly="1">
                                 <list create="0" delete="0">
                                     <field name="name"/>
                                     <field name="hours"/>

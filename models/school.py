@@ -27,7 +27,7 @@ class SchoolSubject(models.Model):
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
     teacher_ids = fields.Many2many('school.teacher', 'school_teacher_subject_rel', 'subject_id', 'teacher_id', string='Teachers', readonly=True)
-    course_ids = fields.Many2many('school.course', 'school_courses_subject_rel', 'course_id', 'subject_id', readonly=True)
+    course_ids = fields.Many2many('school.course', 'school_course_subject_rel', 'course_id', 'subject_id', readonly=True)
 
 
 class SchoolTeacher(models.Model):

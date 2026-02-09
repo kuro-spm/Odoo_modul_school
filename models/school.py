@@ -17,7 +17,8 @@ class SchoolCourse(models.Model):
         column2='subject_id',
         string='Subjects', readonly=True
     )
-    thematic_id = fields.One2many('school.thematic', 'Thematic')
+    thematic_id = fields.Many2one('school.thematic', string='Thematic')
+
 
 class SchoolSubject(models.Model):
     _name = 'school.subject'
@@ -63,4 +64,4 @@ class SchoolTeacher(models.Model):
 class SchoolThematic(models.Model):
     _name = 'school.thematic'
     _description = 'Thematic Management'
-    course_ids = fields.Many2one('school.course', string='Courses')
+    course_ids = fields.One2many('school.course', 'thematic_id', string='Courses')

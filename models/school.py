@@ -64,4 +64,7 @@ class SchoolTeacher(models.Model):
 class SchoolThematic(models.Model):
     _name = 'school.thematic'
     _description = 'Thematic Management'
+
+    name = fields.Char('Name', required=True)
+
     course_ids = fields.One2many('school.course', 'thematic_id', string='Courses')

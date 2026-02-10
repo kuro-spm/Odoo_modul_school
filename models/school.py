@@ -17,7 +17,7 @@ class SchoolCourse(models.Model):
         column2='subject_id',
         string='Subjects', readonly=True
     )
-    thematic_id = fields.Many2one('school.thematic', string='Thematic')
+    thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
 
 
 class SchoolSubject(models.Model):
@@ -28,7 +28,7 @@ class SchoolSubject(models.Model):
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
     teacher_ids = fields.Many2many('school.teacher', 'school_teacher_subject_rel',
-                                   'subject_id', 'teacher_id', string='Teachers', readonly=True)
+                                   'subject_id', 'teacher_id', string='Teachers authorized', readonly=True)
     course_ids = fields.Many2many('school.course', 'school_course_subject_rel',
                                   'subject_id', 'course_id', readonly=True)
 
@@ -53,12 +53,14 @@ class SchoolTeacher(models.Model):
         relation='school_teacher_subject_rel', 
         column1='teacher_id',                   
         column2='subject_id',
-        string='Subjects'
+        string='Subjects authorized'
     )
     #comodel_name= nom de la relació a la que apunta
     #relation = nom de la nova taula que es crea i que conté la relació
     #column1 i column2 han d'estar girades respecte la many2many definida a teacher!!
     #20260209
+    active = fields.Boolean('Active?', default=True)
+    country_id = fields.Many2one('res.country','Citizenship', required=True)
 
     
 class SchoolThematic(models.Model):
@@ -68,3 +70,6 @@ class SchoolThematic(models.Model):
     name = fields.Char('Name', required=True)
 
     course_ids = fields.One2many('school.course', 'thematic_id', string='Courses', readonly=True)
+    #Relacio recursiva:
+    parent_id = fields.Many2one('school.thematic','Parent Thematic')
+    child_ids = fields.One2many('school.thematic','parent_id','Child Thematics', readonly=True)

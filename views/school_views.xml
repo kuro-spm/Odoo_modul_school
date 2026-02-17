@@ -98,8 +98,8 @@
         <field name="model">school.teacher</field>
         <field name="arch" type="xml">
             <list string="Teachers">
-                <field name="first_name" />
-                <field name="last_name" />
+                <!--<field name="first_name" /> <field name="last_name" />-->
+                <field name="full_name" />
                 <field name="birthdate" />
                 <field name="tin" />
                 <field name="gender" />

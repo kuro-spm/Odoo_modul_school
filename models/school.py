@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from odoo import models,fields
+from odoo import models, fields, api
+from datetime import date
+from dateutil.relativedelta import relativedelta
 
 class SchoolCourse(models.Model):
     _name = 'school.course'
@@ -34,9 +36,10 @@ class SchoolSubject(models.Model):
 
 
 class SchoolTeacher(models.Model):
+    #El _ al davant indica que és privat.
     _name = 'school.teacher'
     _description = 'Teacher Management'
-    _rec_name = 'last_name' #Per defecte és Name, però no tenim aquest camp
+    _rec_name = 'full_name' #Per defecte és Name, però no tenim aquest camp
 
     first_name = fields.Char('First Name', size=30, required=True)
     last_name = fields.Char('Last Name', size=40, required=True)
@@ -61,6 +64,29 @@ class SchoolTeacher(models.Model):
     #20260209
     active = fields.Boolean('Active?', default=True)
     country_id = fields.Many2one('res.country','Citizenship', required=True)
+    #Camps calculats:
+    full_name= fields.Char('Full name', compute='_compute_full_name', store=False)
+    age =fields.Integer('Age', compute='_compute_age', store=False)
+
+    #El _ al davant indica que és privat.
+    @api.depends('first_name', 'last_name')
+    def _compute_full_name(self):
+        #self és equivalent a this.
+        #és el conjunt de registres (recordset) sobre el que es necessita executar el mètode.
+        for tchr in self:
+            tchr.full_name= tchr.last_name +", "+ tchr.first_name
+            
+    @api.depends('birthdate')
+    def _compute_age(self):
+        avui = date.today()
+        for tchr in self:
+            if tchr.birthdate: 
+                tchr.age = relativedelta(avui, tchr.birthdate).years
+            else:
+                tchr.age = 0
+
+
+
 
     
 class SchoolThematic(models.Model):

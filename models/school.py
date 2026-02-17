@@ -1,7 +1,20 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api
+from odoo import models, fields, api, _
+from odoo.exceptions import validationError
 from datetime import date
 from dateutil.relativedelta import relativedelta
+from ..utils.utils import is_valid_email
+
+# Per importar funció is_valid_email que es troba en fitxer utils.py a la carpeta de nivell superior:
+#from ..utils import is_valid_email
+
+# Per importar funció is_valid_email que es troba en fitxer utils.py a la carpeta de 2 nivells per damunt:
+# from ...utils import is_valid_email
+
+# Per importar funció is_valid_email que es troba en fitxer utils.py en una subcarpeta xxx:
+# from .xxx.utils import is_valid_email
+
+
 
 class SchoolCourse(models.Model):
     _name = 'school.course'
@@ -89,6 +102,11 @@ class SchoolTeacher(models.Model):
             else:
                 tchr.age = 0
 
+    @api.constrains('salary')
+    def check_salary(self):
+        for tchr in self:
+            if tchr.salary<0:
+                raise ValidationError(_('Salary must be positive.'))
 
 
 

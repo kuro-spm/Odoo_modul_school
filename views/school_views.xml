@@ -22,20 +22,22 @@
         <field name="model">school.course</field>
         <field name="arch" type="xml">
             <form string="Course">
-                <group name="name" col="4">
-                    <group>
-                        <field name="name" />
-                        <field name="hours" />
-                        <field name="manager_id" />
-                        <field name="thematic_id" />
+                <sheet>
+                    <group col="4">
+                        <group>
+                            <field name="name" />
+                            <field name="hours" />
+                            <field name="manager_id" />
+                            <field name="thematic_id" />
+                        </group>
+                        <group>
+                            <field name="create_uid" optional="show" />
+                            <field name="create_date" optional="show" />
+                            <field name="write_uid" optional="hide" />
+                            <field name="write_date" optional="hide" />
+                        </group>
                     </group>
-                    <group>
-                        <field name="create_uid" optional="show" />
-                        <field name="create_date" optional="show" />
-                        <field name="write_uid" optional="hide" />
-                        <field name="write_date" optional="hide" />
-                    </group>
-                </group>
+                </sheet>
             </form>
         </field>
     </record>
@@ -99,7 +101,7 @@
         <field name="arch" type="xml">
             <list string="Teachers">
                 <!--<field name="first_name" /> <field name="last_name" />-->
-                <field name="display_name" />
+                <field name="display_name" string="Full name" />
                 <field name="birthdate" />
                 <field name="tin" />
                 <field name="gender" />

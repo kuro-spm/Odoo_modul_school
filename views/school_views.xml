@@ -16,7 +16,6 @@
         </field>
     </record>
 
-    <!--Todo: es pugui veure/assignar/crear assignatures en school_course_form-->
     <record model="ir.ui.view" id="school_course_form">
         <field name="name">school.course.form</field>
         <field name="model">school.course</field>
@@ -24,17 +23,45 @@
             <form string="Course">
                 <sheet>
                     <group col="4">
-                        <group>
+                        <group colspan="4" col="2">
                             <field name="name" />
-                            <field name="hours" />
-                            <field name="manager_id" />
-                            <field name="thematic_id" />
                         </group>
-                        <group>
-                            <field name="create_uid" optional="show" />
-                            <field name="create_date" optional="show" />
-                            <field name="write_uid" optional="hide" />
-                            <field name="write_date" optional="hide" />
+
+                        <group colspan="2" col="2">
+                            <field name="thematic_id" />
+                            <field name="manager_id" />
+                        </group>
+
+                        <group colspan="2" col="2">
+                            <field name="hours" />
+                        </group>
+
+                        <group colspan="2" col="2">
+                            <separator string="Dades creació" />
+                            <field string="Usuari" name="create_uid" />
+                            <field string="Moment temporal" name="create_date" />
+                        </group>
+
+                        <group colspan="2" col="2">
+                            <separator string="Darrera modificació" />
+                            <field string="Usuari" name="write_uid" />
+                            <field string="Moment temporal" name="write_date" />
+                        </group>
+
+                        <!--S'han de poder veure/assignar/crear assignatures en school_course_form-->
+                        <group string="Subjects" colspan="2" col="2">
+                            <field name="subject_ids" nolabel="1" readonly="0">
+                                <list>
+                                    <field name="name" />
+                                    <field name="hours" />
+                                </list>
+                                <form>
+                                    <group>
+                                        <field name="name" />
+                                        <field name="hours" />
+                                    </group>
+                                </form>
+                            </field>
                         </group>
                     </group>
                 </sheet>

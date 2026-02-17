@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _
-from odoo.exceptions import validationError
+from odoo.exceptions import ValidationError
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from ..utils.utils import is_valid_email
@@ -34,6 +34,12 @@ class SchoolCourse(models.Model):
     )
     thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
 
+    @api.constrains('hours')
+    def check_hours(self):
+            for crs in self:
+                if crs.hours<0:
+                    raise ValidationError(_('Hours must be positive.'))
+
 
 class SchoolSubject(models.Model):
     _name = 'school.subject'
@@ -46,6 +52,11 @@ class SchoolSubject(models.Model):
                                    'subject_id', 'teacher_id', string='Teachers authorized', readonly=True)
     course_ids = fields.Many2many('school.course', 'school_course_subject_rel',
                                   'subject_id', 'course_id', readonly=True)
+    @api.constrains('hours')
+    def check_hours(self):
+            for sbj in self:
+                if sbj.hours<0:
+                    raise ValidationError(_('Hours must be positive.'))
 
 
 class SchoolTeacher(models.Model):
@@ -108,16 +119,34 @@ class SchoolTeacher(models.Model):
             if tchr.salary<0:
                 raise ValidationError(_('Salary must be positive.'))
 
-
-
+    @api.constrains('phone')
+    def check_phone(self):
+        for tchr in self:
+            if tchr.phone and not tchr.phone.isdigit():
+                raise ValidationError("El telèfon del professor només pot contenir dígits.")
     
+    @api.constrains('email')
+    def check_email(self):
+        for tchr in self:
+            if(not is_valid_email(tchr.email)){
+                raise ValidationError("El email del professor no és vàlid.")
+            }
+
+
+
 class SchoolThematic(models.Model):
     _name = 'school.thematic'
     _description = 'Thematic Management'
 
     name = fields.Char('Name', required=True)
+    course_ids = fields.One2many('school.course', 'thematic_id', string='Courses')
+    # Relació recursiva:
+    parent_id = fields.Many2one('school.thematic', string='Parent Thematic')
+    child_ids = fields.One2many('school.thematic', 'parent_id', string='Child Thematics')
 
-    course_ids = fields.One2many('school.course', 'thematic_id', string='Courses', readonly=True)
-    #Relacio recursiva:
-    parent_id = fields.Many2one('school.thematic','Parent Thematic')
-    child_ids = fields.One2many('school.thematic','parent_id','Child Thematics', readonly=True)
+    @api.constrains('parent_id')
+    def _check_hierarchy(self):
+        # _check_recursion() es una función nativa de Odoo. 
+        # Devuelve False si detecta un bucle infinito (Ej: A es padre de B, y B es padre de A)
+        if not self._check_recursion():
+            raise ValidationError('Error! No pots crear temàtiques recursives infinites.')

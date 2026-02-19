@@ -65,6 +65,7 @@ class CourseSubject(models.Model):
     _description = 'Course Subject Rel Management'
 
     pos = fields.Integer('Position', required=True)
+    #La relació intermitja (aquesta) té dues relacions Many2one, mentre que les dues classes a les que apunten tindràn cadascuna una relació One2Many
     course_id = fields.Many2one('school.course', string='Course', required=True)
     subject_id = fields.Many2one('school.subject', string='Subject', required=True)
 

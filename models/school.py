@@ -34,13 +34,13 @@ class SchoolCourse(models.Model):
         string='Subjects', readonly=True
     )
     thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
-    coursecall_ids = fields.One2many('school.coursecall', 'course_id', string='Calls', required=True)
+    coursecall_ids = fields.One2many('school.coursecall', 'course_id', string='Calls')
 
     @api.constrains('hours')
     def check_hours(self):
-            for crs in self:
-                if crs.hours<0:
-                    raise ValidationError(_('Hours must be positive.'))
+        for crs in self:
+            if crs.hours<0:
+                raise ValidationError(_('Hours must be positive.'))
 
 
 class SchoolSubject(models.Model):
@@ -56,9 +56,9 @@ class SchoolSubject(models.Model):
                                   'subject_id', 'course_id', readonly=True)
     @api.constrains('hours')
     def check_hours(self):
-            for sbj in self:
-                if sbj.hours<0:
-                    raise ValidationError(_('Hours must be positive.'))
+        for sbj in self:
+            if sbj.hours<0:
+                raise ValidationError(_('Hours must be positive.'))
 
 
 class SchoolTeacher(models.Model):
@@ -131,7 +131,7 @@ class SchoolTeacher(models.Model):
     @api.constrains('email')
     def check_email(self):
         for tchr in self:
-            if(not is_valid_email(tchr.email)):
+            if tchr.email and not is_valid_email(tchr.email):
                 raise ValidationError("El email del professor no és vàlid.")
             
 
@@ -152,10 +152,7 @@ class SchoolThematic(models.Model):
         # _check_recursion() es una función nativa de Odoo. 
         # Devuelve False si detecta un bucle infinito (Ej: A es padre de B, y B es padre de A)
         if not self._check_recursion():
-            raise ValidationError('Error! No pots crear temàtiques recursives infinites.')
-
-
-
+            raise ValidationError(_('Error! No pots crear temàtiques recursives infinites.'))
 
 class CourseCall(models.Model):
     _name='school.coursecall'

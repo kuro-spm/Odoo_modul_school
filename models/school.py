@@ -8,6 +8,9 @@ from ..utils.utils import is_valid_email
 # Per importar funció is_valid_email que es troba en fitxer utils.py a la carpeta de nivell superior:
 #from ..utils import is_valid_email
 
+# Per importar funció is_valid_email que es troba en fitxer utils.py a mateixa carpeta:
+#from .utils import is_valid_email
+
 # Per importar funció is_valid_email que es troba en fitxer utils.py a la carpeta de 2 nivells per damunt:
 # from ...utils import is_valid_email
 
@@ -126,13 +129,13 @@ class SchoolTeacher(models.Model):
     def check_phone(self):
         for tchr in self:
             if tchr.phone and not tchr.phone.isdigit():
-                raise ValidationError(_("El telèfon del professor només pot contenir dígits."))
+                raise ValidationError(_("The teacher's phone number can only contain digits."))
     
     @api.constrains('email')
     def check_email(self):
         for tchr in self:
             if tchr.email and not is_valid_email(tchr.email):
-                raise ValidationError(_("El email del professor no és vàlid."))
+                raise ValidationError(_("The teacher's email is invalid."))
             
 
 
@@ -152,15 +155,15 @@ class SchoolThematic(models.Model):
         # _check_recursion() es una función nativa de Odoo. 
         # Devuelve False si detecta un bucle infinito (Ej: A es padre de B, y B es padre de A)
         if not self._check_recursion():
-            raise ValidationError(_('Error! No pots crear temàtiques recursives infinites.'))
+            raise ValidationError(_('Error! You cannot create infinite recursive topics.'))
 
 class CourseCall(models.Model):
     _name='school.coursecall'
-    _description ='Couse Call Management'
+    _description ='Course Call Management'
 
     name=fields.Char('Course call', required=True)
-    date_start = fields.Date('Start date', required=True)
-    date_finish = fields.Date('Finish date', required=True)
+    date_start = fields.Date('Start Date', required=True)
+    date_finish = fields.Date('Finish Date', required=True)
     course_id = fields.Many2one('school.course', string='Called Course')
 
 

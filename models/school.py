@@ -23,6 +23,7 @@ class SchoolCourse(models.Model):
     name = fields.Char('Name', size=60, required=True)
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
+    synopsis = fields.Char('Synopsis', size=255, required=False)
     #relacio Many to One: MANY CURSOS pot tenir ONE teacher. un teacher pot tenir molts cursos.
     manager_id = fields.Many2one('school.teacher', 'Manager') #No és required perquè és 0..1
     subject_ids = fields.Many2many(
@@ -74,6 +75,8 @@ class SchoolTeacher(models.Model):
     salary = fields.Integer('Salary')
     email = fields.Char('eMail', size=60, required=True)
     phone = fields.Char('Phone')
+    active = fields.Boolean('Active?', default=True)
+    #photo = fields.???
     #Relacio One2Many: ONE TEACHER pot tenir MANY cursos. Un curs pot tenir un teacher. 
     course_ids = fields.One2many('school.course', 'manager_id', string='Courses', readonly=True)    #_rec_name= "first_name"
     subject_ids = fields.Many2many(
@@ -87,7 +90,6 @@ class SchoolTeacher(models.Model):
     #relation = nom de la nova taula que es crea i que conté la relació
     #column1 i column2 han d'estar girades respecte la many2many definida a teacher!!
     #20260209
-    active = fields.Boolean('Active?', default=True)
     country_id = fields.Many2one('res.country','Citizenship', required=True)
     #Camps calculats:
     #full_name= fields.Char('Full name', compute='_compute_full_name', store=False)
@@ -153,10 +155,9 @@ class SchoolThematic(models.Model):
             raise ValidationError('Error! No pots crear temàtiques recursives infinites.')
 
 
-#class CourseSubject(models.Model):
-#   _pos = ''
 
-class CourseConvocatoria(models.Model):
+
+class CourseCall(models.Model):
     _name='school.coursecall'
     _description ='Couse Call Management'
 

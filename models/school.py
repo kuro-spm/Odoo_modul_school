@@ -76,7 +76,7 @@ class SchoolTeacher(models.Model):
     email = fields.Char('eMail', size=60, required=True)
     phone = fields.Char('Phone')
     active = fields.Boolean('Active?', default=True)
-    #photo = fields.???
+    photo = fields.Image(string="Photo", max_width=1024, max_height=1024)
     #Relacio One2Many: ONE TEACHER pot tenir MANY cursos. Un curs pot tenir un teacher. 
     course_ids = fields.One2many('school.course', 'manager_id', string='Courses', readonly=True)    #_rec_name= "first_name"
     subject_ids = fields.Many2many(

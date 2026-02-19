@@ -26,18 +26,14 @@ class SchoolCourse(models.Model):
     name = fields.Char('Name', size=60, required=True)
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
-    synopsis = fields.Char('Synopsis', size=255, required=False)
+    summary = fields.Text('Summary', required=False) #Alternativa: Html.
+    
     #relacio Many to One: MANY CURSOS pot tenir ONE teacher. un teacher pot tenir molts cursos.
     manager_id = fields.Many2one('school.teacher', 'Manager') #No és required perquè és 0..1
-    subject_ids = fields.Many2many(
-        comodel_name='school.subject',
-        relation='school_course_subject_rel',
-        column1='course_id',
-        column2='subject_id',
-        string='Subjects', readonly=True
-    )
+    #subject_ids = fields.Many2many(comodel_name='school.subject', relation='school_course_subject_rel', column1='course_id', column2='subject_id', string='Subjects', readonly=True)
+    course_subject_ids = fields.One2many('school.course.subject', 'course_id', string='Subjects')
     thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
-    coursecall_ids = fields.One2many('school.coursecall', 'course_id', string='Calls')
+    coursecall_ids = fields.One2many('school.course.call', 'course_id', string='Calls')
 
     @api.constrains('hours')
     def check_hours(self):
@@ -55,13 +51,24 @@ class SchoolSubject(models.Model):
     active = fields.Boolean('Active', default=True)
     teacher_ids = fields.Many2many('school.teacher', 'school_teacher_subject_rel',
                                    'subject_id', 'teacher_id', string='Teachers authorized', readonly=True)
-    course_ids = fields.Many2many('school.course', 'school_course_subject_rel',
-                                  'subject_id', 'course_id', readonly=True)
+    #course_ids = fields.Many2many('school.course', 'school_course_subject_rel', 'subject_id', 'course_id', readonly=True)
+    course_subject_ids = fields.One2many('school.course.subject', 'subject_id', string='Courses')
+    
     @api.constrains('hours')
     def check_hours(self):
         for sbj in self:
             if sbj.hours<0:
                 raise ValidationError(_('Hours must be positive.'))
+            
+class CourseSubject(models.Model):
+    _name = 'school.course.subject'
+    _description = 'Course Subject Rel Management'
+
+    pos = fields.Integer('Position', required=True)
+    course_id = fields.Many2one('school.course', string='Course', required=True)
+    subject_id = fields.Many2one('school.subject', string='Subject', required=True)
+
+
 
 
 class SchoolTeacher(models.Model):
@@ -158,7 +165,7 @@ class SchoolThematic(models.Model):
             raise ValidationError(_('Error! You cannot create infinite recursive topics.'))
 
 class CourseCall(models.Model):
-    _name='school.coursecall'
+    _name='school.course.call'
     _description ='Course Call Management'
 
     name=fields.Char('Course call', required=True)

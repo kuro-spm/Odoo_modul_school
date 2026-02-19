@@ -33,6 +33,7 @@ class SchoolCourse(models.Model):
         string='Subjects', readonly=True
     )
     thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
+    coursecall_ids = fields.One2many('school.coursecall', 'course_id', string='Calls', required=True)
 
     @api.constrains('hours')
     def check_hours(self):
@@ -128,9 +129,9 @@ class SchoolTeacher(models.Model):
     @api.constrains('email')
     def check_email(self):
         for tchr in self:
-            if(not is_valid_email(tchr.email)){
+            if(not is_valid_email(tchr.email)):
                 raise ValidationError("El email del professor no és vàlid.")
-            }
+            
 
 
 
@@ -150,3 +151,22 @@ class SchoolThematic(models.Model):
         # Devuelve False si detecta un bucle infinito (Ej: A es padre de B, y B es padre de A)
         if not self._check_recursion():
             raise ValidationError('Error! No pots crear temàtiques recursives infinites.')
+
+
+#class CourseSubject(models.Model):
+#   _pos = ''
+
+class CourseConvocatoria(models.Model):
+    _name='school.coursecall'
+    _description ='Couse Call Management'
+
+    name=fields.Char('Course call', required=True)
+    date_start = fields.Date('Start date', required=True)
+    date_finish = fields.Date('Finish date', required=True)
+    course_id = fields.Many2one('school.course', string='Called Course')
+
+
+
+
+
+    

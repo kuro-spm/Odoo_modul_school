@@ -126,13 +126,13 @@ class SchoolTeacher(models.Model):
     def check_phone(self):
         for tchr in self:
             if tchr.phone and not tchr.phone.isdigit():
-                raise ValidationError("El telèfon del professor només pot contenir dígits.")
+                raise ValidationError(_("El telèfon del professor només pot contenir dígits."))
     
     @api.constrains('email')
     def check_email(self):
         for tchr in self:
             if tchr.email and not is_valid_email(tchr.email):
-                raise ValidationError("El email del professor no és vàlid.")
+                raise ValidationError(_("El email del professor no és vàlid."))
             
 
 

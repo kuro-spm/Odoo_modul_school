@@ -63,7 +63,7 @@
                         </group>
 
                         <group string="Course Calls" colspan="4">
-                            <field name="coursecall_ids" nolabel="1" readonly="0">
+                            <field name="course_call_ids" nolabel="1" readonly="0">
                                 <list>
                                     <field name="name" />
                                     <field name="date_start" />

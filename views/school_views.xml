@@ -49,6 +49,7 @@
                         </group>
 
                         <!--S'han de poder veure/assignar/crear assignatures en school_course_form-->
+                        <!--Des del formulari de SchoolCourse s’ha de poder continuar amb la gestió (altes-baixesconsultes-modificacions) de les seves assignatures, però ara, des de SchoolCourse no s’accedeix a SchoolSubject, sinó a SchoolCourseSubject i, per tant, els camps a mostrar no són els de SchoolSubject. I cal mostrar el número que ocupa dins el curs i el nom de l’assignatura.-->
                         <group string="Subjects" colspan="2" col="2">
                             <field name="course_subject_ids" nolabel="1" readonly="0">
                                 <list>
@@ -100,7 +101,7 @@
                 <sheet>
                     <group><!-- col="4"-->
                         <group><!--colspan="3"-->
-                            <field name="name" placeholder="Introdueixi el nom..." />
+                            <field name="name" placeholder="Write subject's name..." />
                             <field name="hours" placeholder="???" />
                         </group>
 

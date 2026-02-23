@@ -33,7 +33,7 @@ class SchoolCourse(models.Model):
     #subject_ids = fields.Many2many(comodel_name='school.subject', relation='school_course_subject_rel', column1='course_id', column2='subject_id', string='Subjects', readonly=True)
     course_subject_ids = fields.One2many('school.course.subject', 'course_id', string='Subjects')
     thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
-    coursecall_ids = fields.One2many('school.course.call', 'course_id', string='Calls')
+    course_call_ids = fields.One2many('school.course.call', 'course_id', string='Calls')
 
     @api.constrains('hours')
     def check_hours(self):
@@ -102,7 +102,6 @@ class SchoolTeacher(models.Model):
     #comodel_name= nom de la relació a la que apunta
     #relation = nom de la nova taula que es crea i que conté la relació
     #column1 i column2 han d'estar girades respecte la many2many definida a teacher!!
-    #20260209
     country_id = fields.Many2one('res.country','Citizenship', required=True)
     #Camps calculats:
     #full_name= fields.Char('Full name', compute='_compute_full_name', store=False)

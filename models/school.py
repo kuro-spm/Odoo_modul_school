@@ -172,8 +172,8 @@ class CourseCall(models.Model):
     name=fields.Char('Course call', required=True)
     date_start = fields.Date('Start Date', required=True)
     date_finish = fields.Date('Finish Date')
-    course_id = fields.Many2one('school.course', string='Called Course')
-  
+    #Com que CourseCall té una relació de composició amb curs, si s'elimina el curs, s'han d'eliminar les convocatories també.
+    course_id = fields.Many2one('school.course', string='Called Course', required=True, ondelete='cascade')  
     @api.constrains('date_start', 'date_finish')
     def _check_dates(self):
         for call in self: #necessita un singleton

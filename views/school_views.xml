@@ -23,53 +23,43 @@
             <form string="Course">
                 <sheet>
                     <group col="4">
-                        <group colspan="4" col="2">
+                        <group colspan="2">
                             <field name="name" />
-                        </group>
-
-                        <group colspan="2" col="2">
                             <field name="thematic_id" />
                             <field name="manager_id" />
-                        </group>
-
-                        <group colspan="2" col="2">
                             <field name="hours" />
                         </group>
-
-                        <group colspan="2" col="2">
-                            <separator string="Dades creació" />
-                            <field string="Usuari" name="create_uid" />
-                            <field string="Moment temporal" name="create_date" />
+                        <group colspan="2">
+                            <label for="summary" string="Summary"></label>
+                            <field name="summary" nolabel="1"></field>
                         </group>
 
-                        <group colspan="2" col="2">
-                            <separator string="Darrera modificació" />
-                            <field string="Usuari" name="write_uid" />
-                            <field string="Moment temporal" name="write_date" />
-                        </group>
+                        <!--<group colspan="2" col="2"> <separator string="Dades creació" /> <field string="Usuari" name="create_uid" /> <field string="Moment temporal" name="create_date" /> </group> <group colspan="2" col="2"> <separator string="Darrera modificació" /> <field string="Usuari" name="write_uid" /> <field string="Moment temporal" name="write_date" /> </group>-->
 
                         <!--S'han de poder veure/assignar/crear assignatures en school_course_form-->
                         <!--Des del formulari de SchoolCourse s’ha de poder continuar amb la gestió (altes-baixesconsultes-modificacions) de les seves assignatures, però ara, des de SchoolCourse no s’accedeix a SchoolSubject, sinó a SchoolCourseSubject i, per tant, els camps a mostrar no són els de SchoolSubject. I cal mostrar el número que ocupa dins el curs i el nom de l’assignatura.-->
-                        <group string="Subjects" colspan="2" col="2">
-                            <field name="course_subject_ids" nolabel="1" readonly="0">
-                                <list>
-                                    <!--Com que hem canviat subject_ids per course_subject_ids, això ja no ens cal...-->
-                                    <!--<field name="name" /> <field name="hours" />-->
-                                    <field name="number" />
-                                    <field name="subject_id" />
-                                </list>
-                                <!--<form> <group> <field name="name" /> <field name="hours" /> </group> </form>-->
-                            </field>
-                        </group>
+                        <group>
+                            <group string="Subjects" colspan="2" col="2">
+                                <field name="course_subject_ids" nolabel="1" readonly="0">
+                                    <list>
+                                        <!--Com que hem canviat subject_ids per course_subject_ids, això ja no ens cal...-->
+                                        <!--<field name="name" /> <field name="hours" />-->
+                                        <field name="number" />
+                                        <field name="subject_id" />
+                                    </list>
+                                    <!--<form> <group> <field name="name" /> <field name="hours" /> </group> </form>-->
+                                </field>
+                            </group>
 
-                        <group string="Course Calls" colspan="4">
-                            <field name="course_call_ids" nolabel="1" readonly="0">
-                                <list>
-                                    <field name="name" />
-                                    <field name="date_start" />
-                                    <field name="date_finish" />
-                                </list>
-                            </field>
+                            <group string="Course Calls" colspan="2">
+                                <field name="course_call_ids" nolabel="1" readonly="0">
+                                    <list>
+                                        <field name="name" />
+                                        <field name="date_start" />
+                                        <field name="date_finish" />
+                                    </list>
+                                </field>
+                            </group>
                         </group>
                     </group>
                 </sheet>

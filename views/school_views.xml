@@ -31,7 +31,7 @@
                         </group>
                         <group colspan="2">
                             <label for="summary" string="Summary"></label>
-                            <field name="summary" nolabel="1" editable="1"></field>
+                            <field name="summary" nolabel="1" editable="1" colspan="2"></field>
                         </group>
                     </group>
 

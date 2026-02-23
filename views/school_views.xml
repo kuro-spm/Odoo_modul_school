@@ -5,7 +5,7 @@
         <field name="name">school.course.list</field>
         <field name="model">school.course</field>
         <field name="arch" type="xml">
-            <list string="Courses" editable="top">
+            <list string="Courses"> <!--Compte! posar editable="top" converteix la llista en editable però no podrem accedir al formulari...-->
                 <field name="name" />
                 <field name="hours" />
                 <!--invisible="name>'E'"-->

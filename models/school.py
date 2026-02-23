@@ -29,7 +29,7 @@ class SchoolCourse(models.Model):
     summary = fields.Text('Summary', required=False) #Alternativa: Html.
     
     #relacio Many to One: MANY CURSOS pot tenir ONE teacher. un teacher pot tenir molts cursos.
-    manager_id = fields.Many2one('school.teacher', 'Manager') #No és required perquè és 0..1
+    manager_id = fields.Many2one('school.teacher', 'Manager', required=True) #No seria required si fos 0..1
     #subject_ids = fields.Many2many(comodel_name='school.subject', relation='school_course_subject_rel', column1='course_id', column2='subject_id', string='Subjects', readonly=True)
     course_subject_ids = fields.One2many('school.course.subject', 'course_id', string='Subjects')
     thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
@@ -171,8 +171,17 @@ class CourseCall(models.Model):
 
     name=fields.Char('Course call', required=True)
     date_start = fields.Date('Start Date', required=True)
-    date_finish = fields.Date('Finish Date', required=True)
+    date_finish = fields.Date('Finish Date')
     course_id = fields.Many2one('school.course', string='Called Course')
+  
+    @api.constrains('date_start', 'date_finish')
+    def _check_dates(self):
+        for call in self: #necessita un singleton
+            if call.date_start and call.date_finish:
+                if call.date_finish < call.date_start:
+                    raise ValidationError(_("The finish date cannot be earlier than the start date."))
+
+
 
 
 

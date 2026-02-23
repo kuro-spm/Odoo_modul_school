@@ -55,7 +55,7 @@
                                 <list>
                                     <!--Com que hem canviat subject_ids per course_subject_ids, això ja no ens cal...-->
                                     <!--<field name="name" /> <field name="hours" />-->
-                                    <field name="pos" />
+                                    <field name="number" />
                                     <field name="subject_id" />
                                 </list>
                                 <!--<form> <group> <field name="name" /> <field name="hours" /> </group> </form>-->
@@ -111,7 +111,7 @@
                                 <!--Com que hem canviat course_ids per course_subject_ids, això ja no ens cal...-->
                                 <!--<list create="0" delete="0"> <field name="name" /> <field name="hours" /> </list>-->
                                 <list>
-                                    <field name="pos" />
+                                    <field name="number" />
                                     <field name="course_id" />
                                 </list>
                             </field>

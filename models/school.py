@@ -90,12 +90,12 @@ class SchoolTeacher(models.Model):
     last_name = fields.Char('Last Name', size=40, required=True)
     birthdate = fields.Date('Birthdate', required=True)
     tin = fields.Char('Tax ID', size=14)
-    gender = fields.Selection([('male', 'Male'), ('female', 'Female')],'Gender')
+    gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other','Other')],'Gender')
     salary = fields.Integer('Salary')
     email = fields.Char('eMail', size=60, required=True)
     phone = fields.Char('Phone')
     active = fields.Boolean('Active?', default=True)
-    photo = fields.Image(string="Photo", max_width=1024, max_height=1024)
+    photo = fields.Binary(string="Photo", max_width=1024, max_height=1024, required=True)
     #Relacio One2Many: ONE TEACHER pot tenir MANY cursos. Un curs pot tenir un teacher. 
     course_ids = fields.One2many('school.course', 'manager_id', string='Courses', readonly=True)    #_rec_name= "first_name"
     subject_ids = fields.Many2many(comodel_name='school.subject',relation='school_teacher_subject_rel', column1='teacher_id', column2='subject_id',string='Subjects authorized')

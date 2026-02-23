@@ -156,17 +156,18 @@
                         <!--Per defecte ocupen dues columnes.-->
                         <!--colpan="2" és el valor per defecte-->
                         <group string="Personal data" col="8">
-                            <field name="first_name" colspan="8" placeholder="???" />
-                            <field name="last_name" colspan="8" placeholder="???" />
-                            <!--El genere i l'aniversari es dividiran en dues columnes-->
-                            <field name="gender" colspan="3" placeholder="???" />
-                            <field name="birthdate" colspan="5" placeholder="???" />
+                            <field name="first_name" colspan="8" placeholder="???" required="True" />
+                            <field name="last_name" colspan="8" placeholder="???" required="True" />
+                            <field name="birthdate" colspan="5" placeholder="???" required="True" />
+                            <field name="age" colspan="3" placeholder="???" editable="0" />
+                            <field name="gender" colspan="8" placeholder="???" />
                         </group>
                         <group string="Other data" col="4">
-                            <field name="email" widget="email" colspan="4" placeholder="???" />
-                            <field name="phone" colspan="4" placeholder="???" required="0" />
-                            <field name="tin" placeholder="???" required="True" />
-                            <field name="salary" placeholder="???" />
+                            <field name="email" widget="email" placeholder="???" colspan="4" required="True" />
+                            <field name="phone" placeholder="???" required="0" colspan="2" />
+                            <field name="country_id" required="True" placeholder="???" colspan="2" />
+                            <field name="tin" placeholder="???" colspan="2" />
+                            <field name="salary" placeholder="???" colspan="2" />
                         </group>
                     </group>
                     <notebook>

@@ -158,8 +158,8 @@
                         <group string="Personal data" col="8">
                             <field name="first_name" colspan="8" placeholder="???" required="True" />
                             <field name="last_name" colspan="8" placeholder="???" required="True" />
-                            <field name="birthdate" colspan="5" placeholder="???" required="True" />
-                            <field name="age" colspan="3" placeholder="???" editable="0" />
+                            <field name="birthdate" colspan="4" placeholder="???" required="True" />
+                            <field name="age" colspan="4" col="4" placeholder="???" editable="0" />
                             <field name="gender" colspan="8" placeholder="???" />
                         </group>
                         <group string="Other data" col="4">

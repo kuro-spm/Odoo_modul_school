@@ -169,8 +169,7 @@
                     <notebook>
 
                         <page name="courses" string="Courses">
-                            <field name="course_ids" readonly="0" nolabel="1" widget="many2many" string="Managed Courses" context="{default_manager_id:id}">
-                                <!--nolabel="1" per treure-li l'etiqueta-->
+                            <field name="course_ids" readonly="0" nolabel="1" widget="many2many" string="Managed Courses" context="{'default_manager_id': id}">        <!--nolabel="1" per treure-li l'etiqueta-->
                                 <!--Si no definim una list aqui, surten tots els camps de la primera list de cursos que trobi.-->
                                 <list>
                                     <!--Si volguéssim que no es pugui crear cursos nous, create="0"-->

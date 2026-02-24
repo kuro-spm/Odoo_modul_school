@@ -142,15 +142,14 @@
         </field>
     </record>
 
-    <!--En el formulari de professorat es pugui veure/assignar assignatures, però no crear/eliminar -->
-    <!--En el formulari de professorat es pugui veure/assignar cursos gestionats, però no crear/eliminar-->
+    
     <record model="ir.ui.view" id="view_teacher_form">
         <field name="name">school.teacher.form</field>
         <field name="model">school.teacher</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <field name="photo" widget="image" class="oe_avatar" />
+                    <field name="photo" widget="image" class="oe_avatar"/>
                     <group>
                         <group string="Personal data" col="8">
                             <field name="first_name" colspan="8" placeholder="???" required="True" />
@@ -170,7 +169,7 @@
                     <notebook>
 
                         <page name="courses" string="Courses">
-                            <field name="course_ids" readonly="0" nolabel="1" widget="many2many" string="Managed Courses" context="{default_manager_id:id">
+                            <field name="course_ids" readonly="0" nolabel="1" widget="many2many" string="Managed Courses" context="{default_manager_id:id}">
                                 <!--nolabel="1" per treure-li l'etiqueta-->
                                 <!--Si no definim una list aqui, surten tots els camps de la primera list de cursos que trobi.-->
                                 <list>

@@ -95,7 +95,7 @@ class SchoolTeacher(models.Model):
     email = fields.Char('eMail', size=60, required=True)
     phone = fields.Char('Phone')
     active = fields.Boolean('Active?', default=True)
-    photo = fields.Binary(string="Photo", max_width=1024, max_height=1024, required=True)
+    photo = fields.Binary(string="Photo", max_width=1024, max_height=1024, required=True, attachment="False") #obligar a guardar la foto sencera directament dins de la taula del professor
     #Relacio One2Many: ONE TEACHER pot tenir MANY cursos. Un curs pot tenir un teacher. 
     course_ids = fields.One2many('school.course', 'manager_id', string='Courses', readonly=True)    #_rec_name= "first_name"
     subject_ids = fields.Many2many(comodel_name='school.subject',relation='school_teacher_subject_rel', column1='teacher_id', column2='subject_id',string='Subjects authorized')

@@ -204,7 +204,7 @@
                                         </list>
                                     </field>
                                 </group>
-                                <group></group>
+                                <group></group> <!--Per a que ocupi mitja pantalla-->
                             </group>
                         </page>
                     </notebook>

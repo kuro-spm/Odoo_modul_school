@@ -152,7 +152,6 @@
                 <sheet>
                     <field name="photo" widget="image" class="oe_avatar" />
                     <group>
-                        <field name="photo" widget="image" options="{'size': [40, 40]}" />
                         <group string="Personal data" col="8">
                             <field name="first_name" colspan="8" placeholder="???" required="True" />
                             <field name="last_name" colspan="8" placeholder="???" required="True" />

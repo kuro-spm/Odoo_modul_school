@@ -30,6 +30,12 @@ class SchoolCourse(models.Model):
     
     #relacio Many to One: MANY CURSOS pot tenir ONE teacher. un teacher pot tenir molts cursos.
     manager_id = fields.Many2one('school.teacher', 'Manager', required=True) #No seria required si fos 0..1
+    #camps relacionats amb teacher:
+    manager_phone = fields.Char('Phone', related='manager_id.phone')
+    manager_email = fields.Char('eMail', related='manager_id.email')
+    manager_citizenship = fields.Char('Citizenship', related='manager_id.country_id.name')
+    #manager_citizenship = fields.Many2One('res.country','Citizenship', related='manager_id.country_id')
+
     #subject_ids = fields.Many2many(comodel_name='school.subject', relation='school_course_subject_rel', column1='course_id', column2='subject_id', string='Subjects', readonly=True)
     course_subject_ids = fields.One2many('school.course.subject', 'course_id', string='Subjects')
     thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
@@ -63,6 +69,7 @@ class SchoolSubject(models.Model):
 class CourseSubject(models.Model):
     _name = 'school.course.subject'
     _description = 'Course Subject Rel Management'
+    _order = 'course_id,number'
 
     _order = 'number'
     number = fields.Integer('Number', required=True)
@@ -85,6 +92,7 @@ class SchoolTeacher(models.Model):
     _name = 'school.teacher'
     _description = 'Teacher Management'
     _rec_name = 'display_name' #Per defecte és Name, però no tenim aquest camp
+    _order = 'first_name, last_name'
 
     first_name = fields.Char('First Name', size=30, required=True)
     last_name = fields.Char('Last Name', size=40, required=True)

@@ -22,9 +22,9 @@
         <field name="arch" type="xml">
             <form string="Course">
                 <sheet>
-                    <group col="4">
-                        <group colspan="2">
-
+                    <!--No cal tenir un group que ho englobi tot!-->
+                    <group>
+                        <group>
                             <group>
                                 <field name="name" />
                                 <field name="thematic_id" />
@@ -32,16 +32,17 @@
                             </group>
                             <group string="Manager">
                                 <field name="manager_id" string="Teacher" />
-                                <field name="manager_phone" editable="false" />
+                                <field name="manager_phone" />
                                 <field name="manager_email"></field>
                                 <field name="manager_citizenship"></field>
                             </group>
                         </group>
-                        <group colspan="2">
+                        <group>
                             <label for="summary" string="Summary"></label>
                             <field name="summary" nolabel="1" editable="1" colspan="2"></field>
                         </group>
                     </group>
+
 
                     <!--<group colspan="2" col="2"> <separator string="Dades creació" /> <field string="Usuari" name="create_uid" /> <field string="Moment temporal" name="create_date" /> </group> <group colspan="2" col="2"> <separator string="Darrera modificació" /> <field string="Usuari" name="write_uid" /> <field string="Moment temporal" name="write_date" /> </group>-->
 
@@ -70,7 +71,6 @@
                             </field>
                         </group>
                     </group>
-
                 </sheet>
             </form>
         </field>

@@ -24,15 +24,18 @@
                 <sheet>
                     <group col="4">
                         <group colspan="2">
-                            <field name="name" />
-                            <field name="thematic_id" />
-                            <field name="hours" />
-                        </group>
-                        <group string="Manager">
-                            <field name="manager_id" string="Teacher" />
-                            <field name="manager_phone" editable="false" />
-                            <field name="manager_email"></field>
-                            <field name="manager_citizenship"></field>
+
+                            <group>
+                                <field name="name" />
+                                <field name="thematic_id" />
+                                <field name="hours" />
+                            </group>
+                            <group string="Manager">
+                                <field name="manager_id" string="Teacher" />
+                                <field name="manager_phone" editable="false" />
+                                <field name="manager_email"></field>
+                                <field name="manager_citizenship"></field>
+                            </group>
                         </group>
                         <group colspan="2">
                             <label for="summary" string="Summary"></label>

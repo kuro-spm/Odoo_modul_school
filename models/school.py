@@ -156,6 +156,13 @@ class SchoolTeacher(models.Model):
         for tchr in self:
             if tchr.email and not is_valid_email(tchr.email):
                 raise ValidationError(_("The teacher's email is invalid."))
+    
+    @api.onchange('tin')
+    def _onchange_tin(self):
+        if(self.tin):
+            self.tin = self.tin.upper
+
+
             
 
 

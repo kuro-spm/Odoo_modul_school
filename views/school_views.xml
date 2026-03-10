@@ -29,7 +29,8 @@
                                 <field name="name" />
                                 <field name="thematic_id" />
                                 <field name="hours" />
-                            <separator string="Manager" />
+                                <separator string="Manager" />
+                                <!--El separator fa que estigui tot al mateix nivell (un a sobre de l'altre)-->
                                 <field name="manager_id" string="Teacher" />
                                 <field name="manager_phone" />
                                 <field name="manager_email"></field>

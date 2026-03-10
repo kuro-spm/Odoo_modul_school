@@ -160,7 +160,7 @@ class SchoolTeacher(models.Model):
     @api.onchange('tin')
     def _onchange_tin(self):
         if(self.tin):
-            self.tin = self.tin.upper
+            self.tin = self.tin.upper()
 
 
             

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, api, _
+from odoo import models, fields, api, _ , tools
 from odoo.exceptions import ValidationError
 from datetime import date
 from dateutil.relativedelta import relativedelta
@@ -22,6 +22,7 @@ from ..utils.utils import is_valid_email
 class SchoolCourse(models.Model):
     _name = 'school.course'
     _description = 'Course Management'
+    _order = 'name'
 
     name = fields.Char('Name', size=60, required=True)
     hours = fields.Integer('Hours', required=True)
@@ -47,10 +48,16 @@ class SchoolCourse(models.Model):
             if crs.hours<0:
                 raise ValidationError(_('Hours must be positive.'))
 
+    @api.onchange('name')
+    def _onchange_name(self):
+        if self.name:
+            self.name = self.name.capitalize()
+  
 
 class SchoolSubject(models.Model):
     _name = 'school.subject'
     _description = 'Subject Management'
+    _order = 'name'
 
     name = fields.Char('Name', size=60, required=True, translate=True) #S'ha de poder traduir
     hours = fields.Integer('Hours', required=True)
@@ -69,9 +76,12 @@ class SchoolSubject(models.Model):
 class CourseSubject(models.Model):
     _name = 'school.course.subject'
     _description = 'Course Subject Rel Management'
-    _order = 'course_id,number'
+    _order = 'course_id, number'
+    _sql_constraints = [
+        ('course_subject_unique','unique(course_id, subject_id)', _('The subject in a course must be unique!')),
+        ('course_number_unique','unique(course_id, number)', _('The number in a course must be unique!'))
+    ]
 
-    _order = 'number'
     number = fields.Integer('Number', required=True)
     #La relació intermitja (aquesta) té dues relacions Many2one, mentre que les dues classes a les que apunten tindràn cadascuna una relació One2Many
     course_id = fields.Many2one('school.course', string='Course', required=True, ondelete='cascade')
@@ -83,7 +93,7 @@ class CourseSubject(models.Model):
             if(num.number<0):
                 raise ValidationError(_('Number must be positive.'))
 
-    # hauríem de controlar que en un curs no hi hagi dues assignatures amb el mateix number ni assignatures repetides.
+    
 
 
 
@@ -93,6 +103,9 @@ class SchoolTeacher(models.Model):
     _description = 'Teacher Management'
     _rec_name = 'display_name' #Per defecte és Name, però no tenim aquest camp
     _order = 'first_name, last_name'
+    _sql_constraints=[
+        ('ck_salari','check(salary>=0)','Salary must be positive (controlled by BD)')
+    ]
 
     first_name = fields.Char('First Name', size=30, required=True)
     last_name = fields.Char('Last Name', size=40, required=True)
@@ -104,7 +117,7 @@ class SchoolTeacher(models.Model):
     phone = fields.Char('Phone')
     active = fields.Boolean('Active?', default=True)
     photo = fields.Binary(string="Photo", required=True, attachment="False") #obligar a guardar la foto sencera directament dins de la taula del professor
-    #, max_width=1024, max_height=1024, si és Image
+    #max_width=1024, max_height=1024, si és Image
     #Relacio One2Many: ONE TEACHER pot tenir MANY cursos. Un curs pot tenir un teacher. 
     course_ids = fields.One2many('school.course', 'manager_id', string='Courses', readonly=True)    #_rec_name= "first_name"
     subject_ids = fields.Many2many(comodel_name='school.subject',relation='school_teacher_subject_rel', column1='teacher_id', column2='subject_id',string='Subjects authorized')
@@ -162,6 +175,11 @@ class SchoolTeacher(models.Model):
         if(self.tin):
             self.tin = self.tin.upper()
 
+    def _auto_init(self):
+        res = super(SchoolTeacher, self)._auto_init()
+        tools.create_unique_index(self._cr, 'school_teacher_unique_tin',
+                                  self._table, ['lower(tin)'])
+        return res
 
             
 
@@ -170,6 +188,7 @@ class SchoolTeacher(models.Model):
 class SchoolThematic(models.Model):
     _name = 'school.thematic'
     _description = 'Thematic Management'
+    _order = 'name'
 
     name = fields.Char('Name', required=True)
     course_ids = fields.One2many('school.course', 'thematic_id', string='Courses')

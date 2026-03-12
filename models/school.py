@@ -102,7 +102,7 @@ class SchoolTeacher(models.Model):
     _name = 'school.teacher'
     _description = 'Teacher Management'
     _rec_name = 'display_name' #Per defecte és Name, però no tenim aquest camp
-    _order = 'first_name, last_name'
+    _order = 'last_name,first_name'
     _sql_constraints=[
         ('ck_salari','check(salary>=0)','Salary must be positive (controlled by BD)')
     ]

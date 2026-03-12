@@ -85,7 +85,7 @@ class CourseSubject(models.Model):
     number = fields.Integer('Number', required=True)
     #La relació intermitja (aquesta) té dues relacions Many2one, mentre que les dues classes a les que apunten tindràn cadascuna una relació One2Many
     course_id = fields.Many2one('school.course', string='Course', required=True, ondelete='cascade')
-    subject_id = fields.Many2one('school.subject', string='Subject', required=True)
+    subject_id = fields.Many2one('school.subject', string='Subject', required=True, ondelete='restrict')
 
     @api.constrains('number')
     def check_number(self):
@@ -190,8 +190,7 @@ class SchoolThematic(models.Model):
     _description = 'Thematic Management'
     _order = 'name'
 
-    name = fields.Char('Name', required=True)
-    course_ids = fields.One2many('school.course', 'thematic_id', string='Courses')
+    name = fields.Char('Name', size=60, required=True, translate=True)    course_ids = fields.One2many('school.course', 'thematic_id', string='Courses')
     # Relació recursiva:
     parent_id = fields.Many2one('school.thematic', string='Parent Thematic')
     child_ids = fields.One2many('school.thematic', 'parent_id', string='Child Thematics')

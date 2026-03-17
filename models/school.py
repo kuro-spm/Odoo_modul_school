@@ -207,6 +207,7 @@ class SchoolThematic(models.Model):
 class CourseCall(models.Model):
     _name='school.course.call'
     _description ='Course Call Management'
+    _order='date_start'
 
     name=fields.Char('Course call', required=True)
     date_start = fields.Date('Start Date', required=True)

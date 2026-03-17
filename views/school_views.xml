@@ -269,6 +269,23 @@
         </field>
     </record>
 
+    <!-- school.teaching form view -->
+    <!--<record id="school.teaching_form" model="ir.ui.view"> <field name="name">school.teaching.form</field> <field name="model">school.teaching</field> <field name="arch" type="xml"> <form string="Teaching"> <sheet> <group> </group> </sheet> </form> </field> </record> -->
+
+    <!-- school.teaching form view -->
+    <record id="school.teaching_list" model="ir.ui.view">
+        <field name="name">school.teaching.list</field>
+        <field name="model">school.teaching</field>
+        <field name="arch" type="xml">
+            <list string="Teaching" editable="top">
+                <!--Necessitem poder filtrar els camps segons el que ja s'ha seleccionat.-->
+                <field name="coursecall_id" />
+                <field name="subject_id" domain="[('course_subject_ids.course_id', '=', coursecall_course_id)]" />
+                <field name="teacher_id" domain="[('subject_ids', 'in', subject_id)]" />
+            </list>
+        </field>
+    </record>
+
     <!--Actions-->
     <record model="ir.actions.act_window" id="school_course_action">
         <!--és la action per invocar el contingut dels cursos-->

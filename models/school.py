@@ -244,8 +244,11 @@ class Teaching(models.Model):
     _name = 'school.teaching'
     _description = 'Teaching Management'
 
-    #TODO
-    teacher_id = fields.Many2one('school.teacher', string="Teacher")
-    coursecall_id = fields.Many2one('school.course.call', string="Edition")
-    subject_id = fields.Many2one('school.subject', string="Subject")
+    teacher_id = fields.Many2one('school.teacher', string="Teacher", required=True)
+    coursecall_id = fields.Many2one('school.course.call', string="Edition", required=True)
+    subject_id = fields.Many2one('school.subject', string="Subject", required=True)
+
+    #Related fields per a utilitzar en les views:
+    coursecall_course_id = fields.Many2one('school.course', string="Course", related="coursecall_id.course_id")
+    coursecall_teacher_id = fields.Many2one('school.teacher', string="Course Manager", related="coursecall_id.course_id.manager_id")
     

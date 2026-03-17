@@ -286,6 +286,10 @@
         <field name="name">Teachers</field>
         <field name="res_model">school.teacher</field>
         <field name="view_mode">list,form</field>
+        <!--Fer que es mostrin també els inactius:-->
+        <field name="context">{'active_test': False}</field>
+        <!-- Això afecte NOMES a les vistes invocades per la action -->
+        <!-- Si treiem això es BUGGEJARÀ i seguiran apareixen els inactius. Si ho volem treure ho hem de posar a True. -->
     </record>
 
     <record model="ir.actions.act_window" id="school_thematic_action">

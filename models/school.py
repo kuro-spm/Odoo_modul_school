@@ -127,6 +127,7 @@ class SchoolTeacher(models.Model):
     #relation = nom de la nova taula que es crea i que conté la relació
     #column1 i column2 han d'estar girades respecte la many2many definida a teacher!!
     country_id = fields.Many2one('res.country','Citizenship', required=True)
+    manager_citizenship = fields.Many2one('res.country', string='Citizenship', related='manager_id.country_id')
     #Camps calculats:
     #full_name= fields.Char('Full name', compute='_compute_full_name', store=False)
     #Treiem el full_name perquè farem servir display_name.
@@ -190,7 +191,8 @@ class SchoolThematic(models.Model):
     _description = 'Thematic Management'
     _order = 'name'
 
-    name = fields.Char('Name', size=60, required=True, translate=True)    course_ids = fields.One2many('school.course', 'thematic_id', string='Courses')
+    name = fields.Char('Name', size=60, required=True, translate=True)    
+    course_ids = fields.One2many('school.course', 'thematic_id', string='Courses')
     # Relació recursiva:
     parent_id = fields.Many2one('school.thematic', string='Parent Thematic')
     child_ids = fields.One2many('school.thematic', 'parent_id', string='Child Thematics')

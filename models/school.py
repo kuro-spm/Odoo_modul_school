@@ -95,8 +95,14 @@ class CourseSubject(models.Model):
             if(num.number<0):
                 raise ValidationError(_('Number must be positive.'))
 
-    
-
+    @api.depends('number', 'course_id', 'subject_id')
+    def _compute_display_name(self):
+        for cs in self:
+            if cs.number and cs.course_id and cs.subject_id:
+                cs.display_name = cs.course_id.name + " - " + str(cs.number) + " - " + cs.subject_id.name
+                #python no permet concatenar cadenes amb números, aiixí que necessitem posar str(variable_numerica).
+            else:
+                cs.display_name=''
 
 
 class SchoolTeacher(models.Model):
@@ -222,11 +228,24 @@ class CourseCall(models.Model):
             if call.date_start and call.date_finish:
                 if call.date_finish < call.date_start:
                     raise ValidationError(_("The finish date cannot be earlier than the start date."))
+                
+    @api.depends('name', 'course_id')
+    def _compute_display_name(self):
+        for ce in self:
+            if ce.name and ce.course_id:
+                ce.display_name = ce.course_id.name + " - " + ce.name
+            else:
+                ce.display_name = " - "
 
 
 
 
+class Teaching(models.Model):
+    _name = 'school.teaching'
+    _description = 'Teaching Management'
 
-
-
+    #TODO
+    teacher_id = fields.Many2one('school.teacher', string="Teacher")
+    coursecall_id = fields.Many2one('school.course.call', string="Edition")
+    subject_id = fields.Many2one('school.subject', string="Subject")
     

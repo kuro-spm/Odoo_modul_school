@@ -86,6 +86,8 @@ class CourseSubject(models.Model):
     #La relació intermitja (aquesta) té dues relacions Many2one, mentre que les dues classes a les que apunten tindràn cadascuna una relació One2Many
     course_id = fields.Many2one('school.course', string='Course', required=True, ondelete='cascade')
     subject_id = fields.Many2one('school.subject', string='Subject', required=True, ondelete='restrict')
+    #Related field per poder-ho afegir a la view:
+    subject_hours = fields.Integer('Hours', related='subject_id.hours')
 
     @api.constrains('number')
     def check_number(self):

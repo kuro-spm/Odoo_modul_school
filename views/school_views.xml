@@ -56,6 +56,9 @@
                                     <!--<field name="name" /> <field name="hours" />-->
                                     <field name="number" />
                                     <field name="subject_id" />
+                                    <!--hours és de la classe subject, així que necessitem un related field (subject_hours) al model-->
+                                    <field name="subject_hours"></field>
+
                                 </list>
                                 <!--<form> <group> <field name="name" /> <field name="hours" /> </group> </form>-->
                             </field>

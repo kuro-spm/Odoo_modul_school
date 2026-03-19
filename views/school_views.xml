@@ -199,7 +199,9 @@
                                     </field>
                                 </group>
 
-                                <group></group> <!--Per a que ocupi mitja pantalla-->
+                                <group>
+                                    <!--Per a que ocupi mitja pantalla-->
+                                </group>
                             </group>
                         </page>
 

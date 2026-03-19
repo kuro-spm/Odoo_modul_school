@@ -294,7 +294,7 @@
                 <field name="subject_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
 
                 <field name="teacher_id"
-                    domain="[(id, '=', subject_teacher_ids)]"
+                    domain="[('id', '=', subject_teacher_ids)]"
                     readonly='subject_id==False' />
                 <!--subject_teacher_ids va sense cometes perquè és un VALOR-->
                 <field name="teacher_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->

@@ -68,7 +68,7 @@
                                 <list>
                                     <field name="name" />
                                     <field name="date_start" />
-                                    <field name="date_finish" />
+                                    <field name="date_stop" />
                                 </list>
                             </field>
                         </group>

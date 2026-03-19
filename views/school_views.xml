@@ -200,7 +200,7 @@
                                 </group>
 
                                 <group>
-                                    <!--Per a que ocupi mitja pantalla-->
+                                    <!--Perquè ocupi mitja pantalla-->
                                 </group>
                             </group>
                         </page>
@@ -277,7 +277,7 @@
     <!--<record id="school.teaching_form" model="ir.ui.view"> <field name="name">school.teaching.form</field> <field name="model">school.teaching</field> <field name="arch" type="xml"> <form string="Teaching"> <sheet> <group> </group> </sheet> </form> </field> </record> -->
 
     <!-- school.teaching form view -->
-    <record id="school.teaching_list" model="ir.ui.view">
+    <record id="school_teaching_list" model="ir.ui.view">
         <field name="name">school.teaching.list</field>
         <field name="model">school.teaching</field>
         <field name="arch" type="xml">

@@ -9,7 +9,7 @@
                 <field name="name" />
                 <field name="hours" />
                 <!--invisible="name>'E'"-->
-                <!--PROVES: És invisible si el nom comença per una lletra major a la E-->
+                <!--CONDICIONALS: És invisible si el nom comença per una lletra major a la E-->
                 <field name="manager_id" />
                 <field name="thematic_id" />
             </list>

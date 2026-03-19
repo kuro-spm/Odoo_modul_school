@@ -373,6 +373,7 @@
         id="menu_course_edition"
         name="Course Editions"
         sequence="10"
-        parent="menu_configuration" />
+        parent="menu_configuration"
+        action="school_course_edition_action" />
 
 </odoo>

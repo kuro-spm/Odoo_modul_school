@@ -239,13 +239,12 @@ class CourseEdition(models.Model):
 
 
 
-
 class Teaching(models.Model):
     _name = 'school.teaching'
     _description = 'Teaching Management'
 
     teacher_id = fields.Many2one('school.teacher', string="Teacher", required=True)
-    course_edition_id = fields.Many2one('school.course.edition', string="Edition", required=True)
+    edition_id = fields.Many2one('school.course.edition', string="Edition", required=True)
     subject_id = fields.Many2one('school.subject', string="Subject", required=True)
 
     # Related fields per a utilitzar en les views:

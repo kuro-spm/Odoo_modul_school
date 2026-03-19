@@ -40,7 +40,7 @@ class SchoolCourse(models.Model):
     #subject_ids = fields.Many2many(comodel_name='school.subject', relation='school_course_subject_rel', column1='course_id', column2='subject_id', string='Subjects', readonly=True)
     course_subject_ids = fields.One2many('school.course.subject', 'course_id', string='Subjects')
     thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
-    course_call_ids = fields.One2many('school.course.call', 'course_id', string='Calls')
+    course_edition_ids = fields.One2many('school.course.edition', 'course_id', string='Editions')
 
     @api.constrains('hours')
     def check_hours(self):
@@ -211,30 +211,31 @@ class SchoolThematic(models.Model):
         if not self._check_recursion():
             raise ValidationError(_('Error! You cannot create infinite recursive topics.'))
 
-class CourseCall(models.Model):
-    _name='school.course.call'
-    _description ='Course Call Management'
+class CourseEdition(models.Model):
+    _name='school.course.edition'
+    _description ='Course Edition Management'
     _order='date_start'
 
-    name=fields.Char('Course call', required=True)
+    name = fields.Char('Course edition', required=True)
     date_start = fields.Date('Start Date', required=True)
     date_finish = fields.Date('Finish Date')
-    #Com que CourseCall té una relació de composició amb curs, si s'elimina el curs, s'han d'eliminar les convocatories també.
-    course_id = fields.Many2one('school.course', string='Called Course', required=True, ondelete='cascade')  
+    # Com que CourseEdition té una relació de composició amb curs, si s'elimina el curs, s'han d'eliminar les edicions també.
+    course_id = fields.Many2one('school.course', string='Course', required=True, ondelete='cascade')  
+
     @api.constrains('date_start', 'date_finish')
     def _check_dates(self):
-        for call in self: #necessita un singleton
-            if call.date_start and call.date_finish:
-                if call.date_finish < call.date_start:
+        for edition in self:
+            if edition.date_start and edition.date_finish:
+                if edition.date_finish < edition.date_start:
                     raise ValidationError(_("The finish date cannot be earlier than the start date."))
-                
+
     @api.depends('name', 'course_id')
     def _compute_display_name(self):
-        for ce in self:
-            if ce.name and ce.course_id:
-                ce.display_name = ce.course_id.name + " - " + ce.name
+        for edition in self:
+            if edition.name and edition.course_id:
+                edition.display_name = edition.course_id.name + " - " + edition.name
             else:
-                ce.display_name = " - "
+                edition.display_name = " - "
 
 
 
@@ -244,10 +245,10 @@ class Teaching(models.Model):
     _description = 'Teaching Management'
 
     teacher_id = fields.Many2one('school.teacher', string="Teacher", required=True)
-    coursecall_id = fields.Many2one('school.course.call', string="Edition", required=True)
+    course_edition_id = fields.Many2one('school.course.edition', string="Edition", required=True)
     subject_id = fields.Many2one('school.subject', string="Subject", required=True)
 
-    #Related fields per a utilitzar en les views:
-    coursecall_course_id = fields.Many2one('school.course', string="Course", related="coursecall_id.course_id")
-    coursecall_teacher_id = fields.Many2one('school.teacher', string="Course Manager", related="coursecall_id.course_id.manager_id")
+    # Related fields per a utilitzar en les views:
+    course_edition_course_id = fields.Many2one('school.course', string="Course", related="course_edition_id.course_id")
+    course_edition_teacher_id = fields.Many2one('school.teacher', string="Course Manager", related="course_edition_id.course_id.manager_id")
     

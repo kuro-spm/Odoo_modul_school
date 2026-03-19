@@ -63,8 +63,8 @@
                             </field>
                         </group>
 
-                        <group string="Course Calls" colspan="2">
-                            <field name="course_call_ids" nolabel="1" readonly="0">
+                        <group string="Course Editions" colspan="2">
+                            <field name="course_edition_ids" nolabel="1" readonly="0">
                                 <list>
                                     <field name="name" />
                                     <field name="date_start" />
@@ -279,13 +279,13 @@
         <field name="arch" type="xml">
             <list string="Teaching" editable="top">
                 <!--Necessitem poder filtrar els camps segons el que ja s'ha seleccionat.-->
-                <field name="coursecall_id"
+                <field name="course_edition_id"
                     readonly='subject_id!=False' />
-                <field name="coursecall_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
+                <field name="course_edition_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
 
                 <field name="subject_id"
                     readonly="edition_id==False OR teacher_id==True"
-                    domain="[('course_subject_ids.course_id', '=', coursecall_course_id)]" />
+                    domain="[('course_subject_ids.course_id', '=', course_edition_course_id)]" />
                 <!--<field name="teacher_id" domain="[('subject_ids', 'in', subject_id)]" />-->
                 <field name="subject_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
 
@@ -337,6 +337,12 @@
         <field name="view_mode">list,form</field>
     </record>
 
+    <record model="ir.actions.act_window" id="school_course_edition_action">
+        <field name="name">Course Editions</field>
+        <field name="res_model">school.course.edition</field>
+        <field name="view_mode">calendar</field>
+    </record>
+
 
     <!--Menus-->
     <!--Primer creem el menú principal-->
@@ -358,5 +364,11 @@
 
     <menuitem name="Teaching" id="menu_teaching" parent="menu_root"
         action="school_teaching_action" />
+
+    <menuitem
+        id="menu_course_edition"
+        name="Course Editions"
+        sequence="10"
+        parent="menu_configuration" />
 
 </odoo>

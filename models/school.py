@@ -249,5 +249,6 @@ class Teaching(models.Model):
 
     # Related fields per a utilitzar en les views:
     course_edition_course_id = fields.Many2one('school.course', string="Course", related="edition_id.course_id")
-    course_edition_teacher_id = fields.Many2one('school.teacher', string="Course Manager", related="edition_id.course_id.manager_id")
+    #teachers que té l'assignatura:
+    subject_teacher_ids = fields.Many2one('school.teacher', string="Course Manager", related="edition_id.course_id.manager_id")
     

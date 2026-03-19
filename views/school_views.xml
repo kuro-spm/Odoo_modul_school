@@ -279,9 +279,16 @@
         <field name="arch" type="xml">
             <list string="Teaching" editable="top">
                 <!--Necessitem poder filtrar els camps segons el que ja s'ha seleccionat.-->
-                <field name="coursecall_id" />
-                <field name="subject_id" domain="[('course_subject_ids.course_id', '=', coursecall_course_id)]" />
-                <field name="teacher_id" domain="[('subject_ids', 'in', subject_id)]" />
+                <field name="coursecall_id"
+                    readonly='subject_id!=False' />
+                <field name="subject_id"
+                    readonly="edition_id==False OR teacher_id==True"
+                    domain="[('course_subject_ids.course_id', '=', coursecall_course_id)]" />
+                <!--<field name="teacher_id" domain="[('subject_ids', 'in', subject_id)]" />-->
+                <field name="teacher_id"
+                    domain="[(id, '=', subject_teacher_ids)]"
+                    readonly='subject_id==False' />
+                <!--subject_teacher_ids va sense cometes perquè és un VALOR-->
             </list>
         </field>
     </record>

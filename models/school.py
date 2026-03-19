@@ -34,8 +34,8 @@ class SchoolCourse(models.Model):
     #camps relacionats amb teacher:
     manager_phone = fields.Char('Phone', related='manager_id.phone')
     manager_email = fields.Char('eMail', related='manager_id.email')
-    manager_citizenship = fields.Char('Citizenship', related='manager_id.country_id.name')
-    #manager_citizenship = fields.Many2One('res.country','Citizenship', related='manager_id.country_id')
+    manager_citizenship = fields.Many2one('res.country', string='Citizenship', related='manager_id.country_id')     #manager_citizenship = fields.Char('Citizenship', related='manager_id.country_id.name')
+
 
     #subject_ids = fields.Many2many(comodel_name='school.subject', relation='school_course_subject_rel', column1='course_id', column2='subject_id', string='Subjects', readonly=True)
     course_subject_ids = fields.One2many('school.course.subject', 'course_id', string='Subjects')
@@ -135,7 +135,6 @@ class SchoolTeacher(models.Model):
     #relation = nom de la nova taula que es crea i que conté la relació
     #column1 i column2 han d'estar girades respecte la many2many definida a teacher!!
     country_id = fields.Many2one('res.country','Citizenship', required=True)
-    manager_citizenship = fields.Many2one('res.country', string='Citizenship', related='manager_id.country_id')
     #Camps calculats:
     #full_name= fields.Char('Full name', compute='_compute_full_name', store=False)
     #Treiem el full_name perquè farem servir display_name.

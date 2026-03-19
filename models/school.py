@@ -218,15 +218,15 @@ class CourseEdition(models.Model):
 
     name = fields.Char('Course edition', required=True)
     date_start = fields.Date('Start Date', required=True)
-    date_finish = fields.Date('Finish Date')
+    date_stop = fields.Date('Finish Date')
     # Com que CourseEdition té una relació de composició amb curs, si s'elimina el curs, s'han d'eliminar les edicions també.
     course_id = fields.Many2one('school.course', string='Course', required=True, ondelete='cascade')  
 
-    @api.constrains('date_start', 'date_finish')
+    @api.constrains('date_start', 'date_stop')
     def _check_dates(self):
         for edition in self:
-            if edition.date_start and edition.date_finish:
-                if edition.date_finish < edition.date_start:
+            if edition.date_start and edition.date_stop:
+                if edition.date_stop < edition.date_start:
                     raise ValidationError(_("The finish date cannot be earlier than the start date."))
 
     @api.depends('name', 'course_id')

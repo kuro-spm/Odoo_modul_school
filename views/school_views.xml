@@ -148,6 +148,10 @@
                 <field name="phone" />
                 <!--Amb One2Many ara podem veure els cursos de cada professor-->
                 <field name="course_ids" optional="hide" />
+                <field name="n_managed" optional="hide" />
+                <field name="n_teaching" optional="hide" />
+                <field name="n_subjects" optional="hide" />
+
             </list>
         </field>
     </record>

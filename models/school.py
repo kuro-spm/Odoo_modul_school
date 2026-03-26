@@ -130,6 +130,9 @@ class SchoolTeacher(models.Model):
     course_ids = fields.One2many('school.course', 'manager_id', string='Courses', readonly=True)    #_rec_name= "first_name"
     subject_ids = fields.Many2many(comodel_name='school.subject',relation='school_teacher_subject_rel', column1='teacher_id', column2='subject_id',string='Subjects authorized')
     ####teacher_ids = fields.Many2many('school.teacher', 'school_teacher_subject_rel','subject_id', 'teacher_id', string='Teachers authorized', readonly=True)
+    n_manager = fields.Integer('Num. courses', compute='_compute_n_manager')
+    n_subject = fields.Integer('Num. subject', compute='_compute_n_subject')
+    n_teaching = fields.Integer('Num. teaching', compute='_compute_n_teaching')
 
     #comodel_name= nom de la relació a la que apunta
     #relation = nom de la nova taula que es crea i que conté la relació
@@ -139,6 +142,7 @@ class SchoolTeacher(models.Model):
     #full_name= fields.Char('Full name', compute='_compute_full_name', store=False)
     #Treiem el full_name perquè farem servir display_name.
     age =fields.Integer('Age', compute='_compute_age', store=False)
+
 
     #El _ al davant indica que és privat.
     @api.depends('first_name', 'last_name')
@@ -189,7 +193,22 @@ class SchoolTeacher(models.Model):
                                   self._table, ['lower(tin)'])
         return res
 
-            
+    @api.depends('subject_ids')
+    def _compute_n_subject(self):
+        for teacher in self:
+            teacher.n_subject = len(teacher.subject_ids)
+
+    @api.depends('course_ids')
+    def _compute_n_manager(self):
+        #contar cursos dins de course_ids
+        for teacher in self:
+            teacher.n_manager = len(teacher.course_ids)
+
+    #Hem de fer servir el searchcount perque no tenim els cursos dins del model de teacher
+    def _compute_n_teaching(self):
+        for tchr in self:
+            tchr.n_teaching = self.env['school.teaching'].search_count([('teacher_id', '=', tchr.id)])
+
 
 
 

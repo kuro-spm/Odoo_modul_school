@@ -96,7 +96,7 @@
         <field name="name">school.course.edition.form.calendar</field>
         <field name="model">school.course.edition</field>
         <field name="arch" type="xml">
-            <form string="Edition" duplicate="0" delete="0">
+            <form string="Edition" create="0" duplicate="0" delete="0" edit="0">
                 <sheet>
                     <group>
                         <field name="course_id" readonly="1" />

@@ -268,6 +268,9 @@ class SchoolCourseEdition(models.Model):
     # Com que SchoolCourseEdition té una relació de composició amb curs, si s'elimina el curs, s'han d'eliminar les edicions també.
     course_id = fields.Many2one('school.course', string='Course', required=True, ondelete='cascade')  
 
+    #Camps calculats
+    n_teachers = fields.Integer(string='N. Teachers', compute='_compute_n_teachers')
+
     @api.constrains('date_start', 'date_stop')
     def _check_dates(self):
         for edition in self:
@@ -289,6 +292,21 @@ class SchoolCourseEdition(models.Model):
                 edition.display_name = edition.course_id.name + " - " + edition.name
             else:
                 edition.display_name = " - "
+
+    #Exercici de matrícula
+    def _compute_n_teachers(self):
+        for edition in self:
+            #Fem un SEARCH (No search_count)
+            teachings = self.env['school.teaching'].search([('edition_id', '=', edition.id)])
+            teachers = []
+            #Fem un recorregut per la llista teachings mirant si el teacher ja esta a teachers
+            for t in teachings:
+                if t.teacher_id not in teachers:
+                    teachers.append(t.teacher_id)
+            edition.n_teachers = len(teachers)
+
+
+
 
 class SchoolThematic(models.Model):
     _name = 'school.thematic'

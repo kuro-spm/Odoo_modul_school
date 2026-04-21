@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, fields, api, _ , tools
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 from datetime import date
 from dateutil.relativedelta import relativedelta
 from ..utils.utils import is_valid_email
@@ -217,6 +217,26 @@ class SchoolTeacher(models.Model):
         for tchr in self:
             tchr.n_teaching = self.env['school.teaching'].search_count([('teacher_id', '=', tchr.id)])
 
+#OVERRIDE
+    def unlink(self): #sobreescriu el mètode.
+        for tchr in self:
+            #accions previes a la eliminació
+            #qt = self.env('school.course').search_count(['manager_id', '=', tchr.id]) #nomes compta els actius
+            q = self.env['school.course'].search_count(['manager_id', '=', tchr.id, '|' ,('active','=',True), ('active','=',False)]) #nomes compta els actius
+            if q>0:
+                raise UserError(_(
+                    "Teacher '%s' cannot be deleted because this teacher is manager of %s courses."
+                ) % (tchr.display_name, q))
+        
+        #Per a cada profe, eliminem les docencies
+        for tchr in self:
+            teachings = self.env['school.teaching'].search([('teacher_id', '=', tchr.id)])
+            teachings.unlink()
+        # S'executa l'eliminació de tot el recordset en una sola crida
+        return super(SchoolTeacher, self).unlink()
+    
+    
+
 
 class CourseSubject(models.Model):
     _name = 'school.course.subject'
@@ -340,3 +360,19 @@ class Teaching(models.Model):
     #subject_teacher_ids = fields.Many2one('school.teacher', string="Course Manager", related="edition_id.course_id.manager_id") # retorna el Professor Responsable del curs.
     subject_teacher_ids = fields.Many2many('school.teacher',related='subject_id.teacher_id', string="Authorized Teachers")  #llista de professors que saben fer l'assignatura
     
+class SchoolTeacherSalaryHistory(models.Model):
+    _name = ''
+    _description = ''
+    _order= 'id desc' # 'date desc, time_f desc'
+
+    teacher_id = fields.Many2one('school.teacher', string="Teacher", required=True, ondelete='cascade')
+    user_id = fields.Many2one('res.users', string='User', required=True, ondelete='restrict') #ja és restrict per defecte.
+
+    date = fields.Date('Date', required=True)
+    time_f = fields.Float('Time-F', digits=(5,2), required=True) #La hora es guarda com a float -> Exemple. 18:30 --> 18,5
+    time_s = fields.Char('Time-S', size=5, required=True)
+    salary = fields.Integer('Salary', required=True)
+
+
+
+

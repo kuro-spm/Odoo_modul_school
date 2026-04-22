@@ -1,0 +1,79 @@
+ <!--views-->
+<odoo>
+    <record model="ir.ui.view" id="school_course_list">
+        <field name="name">school.course.list</field>
+        <field name="model">school.course</field>
+        <field name="arch" type="xml">
+            <list string="Courses"> <!--Compte! posar editable="top" converteix la llista en editable però no podrem accedir al formulari...-->
+                <field name="name" />
+                <field name="hours" />
+                <!--invisible="name>'E'"-->
+                <!--CONDICIONALS: És invisible si el nom comença per una lletra major a la E-->
+                <field name="manager_id" />
+                <field name="thematic_id" />
+            </list>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="school_course_form">
+        <field name="name">school.course.form</field>
+        <field name="model">school.course</field>
+        <field name="arch" type="xml">
+            <form string="Course">
+                <sheet>
+                    <!--No cal tenir un group que ho englobi tot!-->
+                    <group>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="thematic_id" />
+                                <field name="hours" />
+                                <separator string="Manager" />
+                                <!--El separator fa que estigui tot al mateix nivell (un a sobre de l'altre)-->
+                                <field name="manager_id" string="Teacher" />
+                                <field name="manager_phone" />
+                                <field name="manager_email" />
+                                <field name="manager_citizenship" />
+                            </group>
+                        </group>
+                        <group>
+                            <label for="summary" string="Summary" />
+                            <field name="summary" nolabel="1" editable="1" colspan="2" />
+                        </group>
+                    </group>
+
+
+                    <!--<group colspan="2" col="2"> <separator string="Dades creació" /> <field string="Usuari" name="create_uid" /> <field string="Moment temporal" name="create_date" /> </group> <group colspan="2" col="2"> <separator string="Darrera modificació" /> <field string="Usuari" name="write_uid" /> <field string="Moment temporal" name="write_date" /> </group>-->
+
+                    <!--S'han de poder veure/assignar/crear assignatures en school_course_form-->
+                    <!--Des del formulari de SchoolCourse s’ha de poder continuar amb la gestió (altes-baixesconsultes-modificacions) de les seves assignatures, però ara, des de SchoolCourse no s’accedeix a SchoolSubject, sinó a SchoolCourseSubject i, per tant, els camps a mostrar no són els de SchoolSubject. I cal mostrar el número que ocupa dins el curs i el nom de l’assignatura.-->
+                    <group col="4">
+                        <group string="Subjects" colspan="2">
+                            <field name="course_subject_ids" nolabel="1" readonly="0">
+                                <list>
+                                    <!--Com que hem canviat subject_ids per course_subject_ids, això ja no ens cal...-->
+                                    <!--<field name="name" /> <field name="hours" />-->
+                                    <field name="number" />
+                                    <field name="subject_id" />
+                                    <!--hours és de la classe subject, així que necessitem un related field (subject_hours) al model-->
+                                    <field name="subject_hours" />
+                                </list>
+                                <!--<form> <group> <field name="name" /> <field name="hours" /> </group> </form>-->
+                            </field>
+                        </group>
+
+                        <group string="Course Editions" colspan="2">
+                            <field name="course_edition_ids" nolabel="1" readonly="0">
+                                <list>
+                                    <field name="name" />
+                                    <field name="date_start" />
+                                    <field name="date_stop" />
+                                </list>
+                            </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

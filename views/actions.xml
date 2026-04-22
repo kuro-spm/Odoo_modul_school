@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!--Actions-->
+    <record model="ir.actions.act_window" id="school_course_action">
+        <!--és la action per invocar el contingut dels cursos-->
+        <field name="name">Courses</field>
+        <field name="res_model">school.course</field>
+        <field name="view_mode">list,form</field>
+        <!--Si encara no hem fet la vista 'form', Odoo crea una per defecte!!!-->
+    </record>
+
+    <record model="ir.actions.act_window" id="school_subject_action">
+        <field name="name">Subjects</field>
+        <field name="res_model">school.subject</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="school_teacher_action">
+        <field name="name">Teachers</field>
+        <field name="res_model">school.teacher</field>
+        <field name="view_mode">list,form,calendar</field>
+        <!--Fer que es mostrin també els inactius:-->
+        <field name="context">{'active_test': False}</field>
+        <!-- Això afecte NOMES a les vistes invocades per la action -->
+        <!-- Si treiem això es BUGGEJARÀ i seguiran apareixen els inactius. Si ho volem treure ho hem de posar a True. -->
+    </record>
+
+    <!--Si volem tenir un botó o un menú separat per a vistes amb propòsits tan diferents...-->
+    <!--<record id="school_teacher_birthday_calendar" model="ir.ui.view"> <field name="name">school.teacher.birthday.calendar</field> <field name="res_model">school.teacher</field> <field name="arch" type="xml"> <calendar string="Birthdays" date_start="birthday_this_year" color="gender"> <field name="display_name" /> <field name="age_celebrated" /> </calendar> </field> </record>-->
+
+    <record model="ir.actions.act_window" id="school_thematic_action">
+        <field name="name">Thematic</field>
+        <field name="res_model">school.thematic</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+
+    <record model="ir.actions.act_window" id="school_teaching_action">
+        <field name="name">Teaching</field>
+        <field name="res_model">school.teaching</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="school_course_edition_action">
+        <field name="name">Course Editions</field>
+        <field name="res_model">school.course.edition</field>
+        <field name="view_mode">calendar</field>
+    </record>
+
+
+</odoo>

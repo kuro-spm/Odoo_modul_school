@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="school_thematic_list">
+        <field name="name">school.thematic.list</field>
+        <field name="model">school.thematic</field>
+        <field name="arch" type="xml">
+            <list string="Thematics" editable="top">
+                <field name="name" />
+                <field name="parent_id" />
+                <field name="child_ids" />
+                <field name="course_ids" />
+            </list>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="school_thematic_form">
+        <field name="name">school.thematic.form</field>
+        <field name="model">school.thematic</field>
+        <field name="arch" type="xml">
+            <form string="Thematic">
+                <sheet>
+                    <group colspan="2">
+                        <group colspan="2">
+                            <field name="name" />
+                            <field name="parent_id" />
+                        </group>
+                        <group string="Child Thematics">
+                            <field name="child_ids" nolabel="1" colspan="2">
+                                <list>
+                                    <field name="name" />
+                                </list>
+                            </field>
+                        </group>
+                        <group string="Courses">
+                            <field name="course_ids" nolabel="1" colspan="2">
+                                <list>
+                                    <field name="name" />
+                                    <field name="hours" />
+                                    <field name="manager_id" />
+                                </list>
+                            </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

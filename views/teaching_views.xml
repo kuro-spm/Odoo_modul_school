@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <!-- school.teaching form view -->
+    <!--<record id="school.teaching_form" model="ir.ui.view"> <field name="name">school.teaching.form</field> <field name="model">school.teaching</field> <field name="arch" type="xml"> <form string="Teaching"> <sheet> <group> </group> </sheet> </form> </field> </record> -->
+
+    <!-- school.teaching form view -->
+    <record id="school_teaching_list" model="ir.ui.view">
+        <field name="name">school.teaching.list</field>
+        <field name="model">school.teaching</field>
+        <field name="arch" type="xml">
+            <list string="Teaching" editable="top">
+                <!--Necessitem poder filtrar els camps segons el que ja s'ha seleccionat.-->
+                <field name="edition_id"
+                    readonly='subject_id!=False' />
+                <field name="edition_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
+
+                <field name="subject_id"
+                    readonly="edition_id==False or teacher_id==True"
+                    domain="[('course_subject_ids.course_id', '=', course_edition_course_id)]" />
+                <!--<field name="teacher_id" domain="[('subject_ids', 'in', subject_id)]" />-->
+                <field name="subject_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
+
+                <field name="teacher_id"
+                    domain="[('id', '=', subject_teacher_ids)]"
+                    readonly='subject_id==False' />
+                <!--subject_teacher_ids va sense cometes perquè és un VALOR-->
+                <field name="teacher_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
+
+            </list>
+        </field>
+    </record>
+
+
+</odoo>

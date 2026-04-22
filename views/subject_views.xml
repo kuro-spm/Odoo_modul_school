@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record model="ir.ui.view" id="school_subject_list">
+        <field name="name">school.subject.list</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <list string="Subjects">
+                <field name="name" />
+                <field name="hours" />
+                <field name="create_uid" optional="show" />
+                <field name="create_date" optional="show" />
+                <field name="write_uid" optional="hide" />
+                <field name="write_date" optional="hide" />
+            </list>
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="school_subject_form">
+        <field name="name">school.subject.form</field>
+        <field name="model">school.subject</field>
+        <field name="arch" type="xml">
+            <form string="Subject">
+                <sheet>
+                    <group><!-- col="4"-->
+                        <group><!--colspan="3"-->
+                            <field name="name" placeholder="Write subject's name..." />
+                            <field name="hours" placeholder="???" />
+                        </group>
+
+                        <!--En el formulari d’assignatures es pugui veure els cursos on apareix, però no assignar/crear/eliminar cursos-->
+                        <group string="Courses"><!-- colspan="1"-->
+                            <field name="course_subject_ids" nolabel="1" readonly="1">
+                                <!--Com que hem canviat course_ids per course_subject_ids, això ja no ens cal...-->
+                                <!--<list create="0" delete="0"> <field name="name" /> <field name="hours" /> </list>-->
+                                <list>
+                                    <field name="number" />
+                                    <field name="course_id" />
+                                </list>
+                            </field>
+                        </group>
+                        <!--En el formulari d’assignatures es pugui veure el professorat que la pot impartir, però sense assignar/crear/eliminar professorat.-->
+                        <group string="Authorized Teachers">
+                            <field name="teacher_ids" nolabel="1" readonly="1">
+                                <list create="0" delete="0">
+                                    <field name="display_name" />
+                                    <field name="email" />
+                                </list>
+                            </field>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

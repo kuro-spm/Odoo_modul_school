@@ -16,7 +16,17 @@
     'author': 'Group DAM2 - Course 2025-2026',
     'website': 'http://www.infomila.info',
     'depends': ['base'],
-    'data': ['views/school_views.xml'],
+    'data': [
+        'views/actions.xml',   # primer accions
+        'views/menus.xml',     # després menús
+        'views/course_views.xml',
+        'views/course_edition_views.xml',
+        'views/subject_views.xml',
+        'views/teacher_views.xml',
+        'views/thematic_views.xml',
+        'views/teaching_views.xml',
+     
+    ],
     'demo': [],
     'installable': True,
     'application': True,

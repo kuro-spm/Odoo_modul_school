@@ -35,6 +35,7 @@ class SchoolCourseEdition(models.Model):
             # ja que no es pot aplicar upper() sobre un "buit" (en realitat "False")
             self.name = self.name.title() #ho posa tot en majúscula?
 
+#ONCHANGE
     @api.depends('name', 'course_id')
     def _compute_display_name(self):
         for edition in self:
@@ -55,5 +56,21 @@ class SchoolCourseEdition(models.Model):
                     teachers.append(t.teacher_id)
             edition.n_teachers = len(teachers)
 
+#OVERRIDES
+    @api.model_create_multi
+    def create(self, values):
+        # values és una llista de diccionaris amb els valors dels camps dels registres a inserir
+        for diccionari in values:
+            if 'name' in diccionari and diccionari['name'] != False:
+                diccionari['name'] = diccionari['name'].title()
+        r = super().create(values)
+        return r
 
+    def write(self, values):
+        # self conté els registres a modificar
+        # values conté els camps a modificar
+        if 'name' in values and values['name'] != False:
+            values['name'] = values['name'].title()
+        register = super().write(values)
+        return register
 

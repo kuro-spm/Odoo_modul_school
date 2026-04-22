@@ -12,21 +12,22 @@
         <field name="arch" type="xml">
             <list string="Teaching" editable="top">
                 <!--Necessitem poder filtrar els camps segons el que ja s'ha seleccionat.-->
-                <field name="edition_id"
-                    readonly='subject_id!=False' />
-                <field name="edition_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
+                <field name="edition_id" readonly='subject_id!=False' />  <!--Els camps readonly no s'envien a la base de dades-->
+                <field name="edition_id" column_invisible="1" /> <!--Podem necessitar aquest camp invisible per actualitzar la BD-->
 
                 <field name="subject_id"
-                    readonly="edition_id==False or teacher_id==True"
-                    domain="[('course_subject_ids.course_id', '=', course_edition_course_id)]" />
-                <!--<field name="teacher_id" domain="[('subject_ids', 'in', subject_id)]" />-->
+                    domain="[('course_id','=',edition_course_id)]"
+                    readonly="edition_id==False or teacher_id!=False"
+                />
+                <!-- <field name="edition_course_id" column_invisible="1"/> --><!-- Camp anterior necessari en Odoo 17- per poder-lo usar en el domain-->
                 <field name="subject_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
-
-                <field name="teacher_id"
-                    domain="[('id', '=', subject_teacher_ids)]"
-                    readonly='subject_id==False' />
+   
                 <!--subject_teacher_ids va sense cometes perquè és un VALOR-->
-                <field name="teacher_id" column_invisible="1" /> <!--Els camps readonly no s'envien a la base de dades-->
+                <!-- <field name="subject_teacher_ids" column_invisible="1"/> --><!-- Camp anterior necessari en Odoo 17- per poder-lo usar en el domain-->
+                <field name="teacher_id"
+                    domain="[('id','in',subject_teacher_ids)]"
+                    readonly="subject_id==False"
+                />
 
             </list>
         </field>

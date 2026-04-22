@@ -5,7 +5,7 @@
         <field name="name">school.course.list</field>
         <field name="model">school.course</field>
         <field name="arch" type="xml">
-            <list string="Courses"> <!--Compte! posar editable="top" converteix la llista en editable però no podrem accedir al formulari...-->
+            <list string="Courses">
                 <field name="name" />
                 <field name="hours" />
                 <!--invisible="name>'E'"-->
@@ -39,7 +39,7 @@
                         </group>
                         <group>
                             <label for="summary" string="Summary" />
-                            <field name="summary" nolabel="1" editable="1" colspan="2" />
+                            <field name="summary" nolabel="1" widget="html" options="{'resizable':true}" />
                         </group>
                     </group>
 
@@ -51,15 +51,13 @@
                     <group col="4">
                         <group string="Subjects" colspan="2">
                             <field name="course_subject_ids" nolabel="1" readonly="0">
-                                <list>
-                                    <!--Com que hem canviat subject_ids per course_subject_ids, això ja no ens cal...-->
-                                    <!--<field name="name" /> <field name="hours" />-->
+                                <list editable="top">
+                                    <!--Compte! posar editable="top" converteix la llista en editable però no podrem accedir al formulari...-->
                                     <field name="number" />
                                     <field name="subject_id" />
                                     <!--hours és de la classe subject, així que necessitem un related field (subject_hours) al model-->
                                     <field name="subject_hours" />
                                 </list>
-                                <!--<form> <group> <field name="name" /> <field name="hours" /> </group> </form>-->
                             </field>
                         </group>
 
@@ -70,6 +68,19 @@
                                     <field name="date_start" />
                                     <field name="date_stop" />
                                 </list>
+                                <form>
+                                    <group>
+                                        <group colspan="2">
+                                            <field name="name" />
+                                        </group>
+                                        <group>
+                                            <field name="date_start" />
+                                        </group>
+                                        <group>
+                                            <field name="date_end" />
+                                        </group>
+                                    </group>
+                                </form>
                             </field>
                         </group>
                     </group>

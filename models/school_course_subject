@@ -1,0 +1,40 @@
+from odoo import models, fields, api, _, tools
+from odoo.exceptions import ValidationError
+
+
+
+class CourseSubject(models.Model):
+    _name = 'school.course.subject'
+    _description = 'Course Subject Rel Management'
+    _order = 'number, course_id'
+    _sql_constraints = [
+        ('course_subject_unique','unique(course_id, subject_id)', _('The subject in a course must be unique!')),
+        ('course_number_unique','unique(course_id, number)', _('The number in a course must be unique!'))
+    ]
+    #camps pròpis
+    number = fields.Integer('Number', required=True)
+    
+    #La relació intermitja (aquesta) té dues relacions Many2one, mentre que les dues classes a les que apunten tindràn cadascuna una relació One2Many
+    course_id = fields.Many2one('school.course', string='Course', required=True, ondelete='cascade')
+    subject_id = fields.Many2one('school.subject', string='Subject', required=True, ondelete='restrict')
+    
+    #Related field per poder-ho afegir a la view:
+    subject_hours = fields.Integer('Hours', related='subject_id.hours')
+
+    @api.constrains('number')
+    def check_number(self):
+        for num in self:
+            if(num.number<0):
+                raise ValidationError(_('Number must be positive.'))
+
+    @api.depends('number', 'course_id', 'subject_id')
+    def _compute_display_name(self):
+        for cs in self:
+            if cs.number and cs.course_id and cs.subject_id:
+                cs.display_name = cs.course_id.name + " - " + str(cs.number) + " - " + cs.subject_id.name
+                #python no permet concatenar cadenes amb números, aiixí que necessitem posar str(variable_numerica).
+            else:
+                cs.display_name=''
+
+
+

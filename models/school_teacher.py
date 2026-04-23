@@ -87,6 +87,7 @@ class SchoolTeacher(models.Model):
         if(self.tin):
             self.tin = self.tin.upper()
 
+#ÍNDEX ÚNIC _AUTO_INIT
     def _auto_init(self):
         res = super(SchoolTeacher, self)._auto_init()
         tools.create_unique_index(self._cr, 'school_teacher_unique_tin',

@@ -19,7 +19,7 @@
                 <!--Amb la One2Many ara podem veure els cursos de cada professor-->
                 <field name="course_ids" optional="hide" />
                 <!--Amb els nous camps computed podem veure el núm de cursos, teachings i assignatures del professor-->
-                <field name="n_managed" optional="show" />
+                <field name="n_manager" optional="show" />
                 <field name="n_teaching" optional="show" />
                 <field name="n_subjects" optional="show" />
 

@@ -36,6 +36,7 @@ class SchoolTeacher(models.Model):
     first_name = fields.Char('First Name', size=30, required=True)
     last_name = fields.Char('Last Name', size=40, required=True)
     birthdate = fields.Date('Birthdate', required=True)
+
     tin = fields.Char('Tax ID', size=14)
     gender = fields.Selection([('male', 'Male'), ('female', 'Female'), ('other','Other')],'Gender')
     salary = fields.Integer('Salary')

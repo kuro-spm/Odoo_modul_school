@@ -12,7 +12,7 @@ class SchoolTeaching(models.Model):
 
     # Related fields per a utilitzar en les views:
     course_edition_course_id = fields.Many2one('school.course', string="Course", related="edition_id.course_id")
-    subject_teacher_ids = fields.Many2many('school.teacher',related='subject_id.teacher_id', string="Authorized Teachers")  #llista de professors que saben fer l'assignatura
+    subject_teacher_ids = fields.Many2many('school.teacher',related='subject_id.teacher_ids', string="Authorized Teachers")  #llista de professors que saben fer l'assignatura
     
 
 

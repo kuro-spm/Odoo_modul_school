@@ -4,7 +4,7 @@ from odoo.exceptions import ValidationError, UserError
 
 
 class SchoolTeacherSalaryHistory(models.Model):
-    _name = 'school_teacher_salary_history'
+    _name = 'school.teacher.salary.history' #usar punts!
     _description = 'Salary History Management'
     _order= 'id desc' # 'date desc, time_f desc'
 

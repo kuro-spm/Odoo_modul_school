@@ -60,7 +60,7 @@ class SchoolTeacher(models.Model):
     n_teaching = fields.Integer(string='Num. teaching', compute='_compute_n_teaching')
     age =fields.Integer('Age', compute='_compute_age', store=False)
     #full_name= fields.Char('Full name', compute='_compute_full_name', store=False) #Treiem el full_name perquè farem servir display_name.
-    birthday_this_year = fields.Date(string='Birthday', compute='compute_birthday')
+    birthday = fields.Date(string='Birthday', compute='compute_birthday') #birthday_this_year
     age_celebrated =fields.Integer(string='Age celebrated', compute='_compute_age_celebrated')
 
 #CONSTRAINS:

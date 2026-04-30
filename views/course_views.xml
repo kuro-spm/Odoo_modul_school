@@ -77,7 +77,7 @@
                                             <field name="date_start" />
                                         </group>
                                         <group>
-                                            <field name="date_end" />
+                                            <field name="date_stop" />
                                         </group>
                                     </group>
                                 </form>

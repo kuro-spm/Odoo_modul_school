@@ -21,7 +21,7 @@
                 <!--Amb els nous camps computed podem veure el núm de cursos, teachings i assignatures del professor-->
                 <field name="n_manager" optional="show" />
                 <field name="n_teaching" optional="show" />
-                <field name="n_subjects" optional="show" />
+                <field name="n_subject" optional="show" />
 
             </list>
         </field>

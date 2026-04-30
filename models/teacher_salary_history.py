@@ -4,8 +4,8 @@ from odoo.exceptions import ValidationError, UserError
 
 
 class SchoolTeacherSalaryHistory(models.Model):
-    _name = ''
-    _description = ''
+    _name = 'school_teacher_salary_history'
+    _description = 'Salary History Management'
     _order= 'id desc' # 'date desc, time_f desc'
 
     teacher_id = fields.Many2one('school.teacher', string="Teacher", required=True, ondelete='cascade')

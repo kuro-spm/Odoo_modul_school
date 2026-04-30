@@ -81,15 +81,20 @@ class SchoolTeacher(models.Model):
             if tchr.phone and not tchr.phone.isdigit():
                 raise ValidationError(_("The teacher's phone number can only contain digits."))
 
-#ONCHANGE                
+#ONCHANGE
+# #converteix el DNI/TIN en majúscules automàticament mentre s'escriu.                
     @api.onchange('tin')
     def _onchange_tin(self):
         if(self.tin):
             self.tin = self.tin.upper()
 
 #ÍNDEX ÚNIC _AUTO_INIT
+#super(): Manté la funcionalitat base d'Odoo.
+#self._cr: Cursor: El pont cap a SQL.
+#self._table: El nom de la taula.
+#lower(): Funció SQL per ignorar majúscules/minúscules.
     def _auto_init(self):
-        res = super(SchoolTeacher, self)._auto_init()
+        res = super(SchoolTeacher, self)._auto_init() #Crear la taula amb el metode original
         tools.create_unique_index(self._cr, 'school_teacher_unique_tin',
                                   self._table, ['lower(tin)'])
         return res
@@ -144,8 +149,8 @@ class SchoolTeacher(models.Model):
 
     #Hem de fer servir el searchcount perque no tenim els cursos dins del model de teacher
     def _compute_n_teaching(self):
-        for tchr in self:
-            tchr.n_t
+        for teacher in self:
+            teacher.n_teaching = self.env['school.teaching'].search_count([('teacher_id','=',teacher.id)])
             
     @api.depends('birthdate', 'birthday_this_year')
     def _compute_age_celebrated(self):

@@ -13,8 +13,8 @@ class SchoolCourse(models.Model):
     summary = fields.Text('Summary', required=False) #Alternativa: Html.
     
     manager_id = fields.Many2one('school.teacher', 'Manager', required=True) #, domain=[('country_id.code', '=', 'ES')])     #relacio Many to One: MANY CURSOS pot tenir ONE teacher. un teacher pot tenir molts cursos.
-    course_subject_ids = fields.One2many('school.course.subject', 'course_id', string='Subjects', readonly=True) 
     thematic_id = fields.Many2one('school.thematic', string='Thematic', required=True)
+    course_subject_ids = fields.One2many('school.course.subject', 'course_id', string='Subjects', readonly=True) 
     course_edition_ids = fields.One2many('school.course.edition', 'course_id', string='Editions')
 
     #Camps extra per a poder posar-los en les vistes

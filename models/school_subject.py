@@ -10,11 +10,11 @@ class SchoolSubject(models.Model):
     name = fields.Char('Name', size=60, required=True, translate=True) #S'ha de poder traduir
     hours = fields.Integer('Hours', required=True)
     active = fields.Boolean('Active', default=True)
+    
+    course_subject_ids = fields.One2many('school.course.subject', 'subject_id', string='Courses', readonly=True)
+    #course_ids = fields.Many2many('school.course', 'school_course_subject_rel', 'subject_id', 'course_id', readonly=True)
     teacher_ids = fields.Many2many('school.teacher', 'school_teacher_subject_rel',
                                    'subject_id', 'teacher_id', string='Teachers authorized', readonly=True)
-    #course_ids = fields.Many2many('school.course', 'school_course_subject_rel', 'subject_id', 'course_id', readonly=True)
-    course_subject_ids = fields.One2many('school.course.subject', 'subject_id', string='Courses', readonly=True)
-    
     @api.constrains('hours')
     def check_hours(self):
         for sbj in self:

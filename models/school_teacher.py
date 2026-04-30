@@ -128,13 +128,13 @@ class SchoolTeacher(models.Model):
             if tchr.birthdate:
                 try:
                     # Intentem crear la data amb l'any actual
-                    tchr.birthday_this_year = tchr.birthdate.replace(year=avui.year)
+                    tchr.birthday = tchr.birthdate.replace(year=avui.year)
                 except ValueError:
                     # Si falla (és 29 de febrer i l'any actual no és de traspàs)
                     # segons el dossier, ho posem al 1 de març 
-                    tchr.birthday_this_year = tchr.birthdate.replace(year=avui.year, month=3, day=1)
+                    tchr.birthday = tchr.birthdate.replace(year=avui.year, month=3, day=1)
             else:
-                tchr.birthday_this_year = False
+                tchr.birthday = False
 
 
     @api.depends('course_ids')
@@ -153,12 +153,12 @@ class SchoolTeacher(models.Model):
         for teacher in self:
             teacher.n_teaching = self.env['school.teaching'].search_count([('teacher_id','=',teacher.id)])
             
-    @api.depends('birthdate', 'birthday_this_year')
+    @api.depends('birthdate', 'birthday')
     def _compute_age_celebrated(self):
         for tchr in self:
-            if tchr.birthdate and tchr.birthday_this_year:
+            if tchr.birthdate and tchr.birthday:
                 # L'edat que celebra és la diferència d'anys
-                tchr.age_celebrated = tchr.birthday_this_year.year - tchr.birthdate.year
+                tchr.age_celebrated = tchr.birthday.year - tchr.birthdate.year
             else:
                 tchr.age_celebrated = 0
 

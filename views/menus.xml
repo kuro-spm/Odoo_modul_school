@@ -7,10 +7,10 @@
     <menuitem name="Configuration" id="menu_configuration" parent="menu_root" sequence="99" />
 
     <!-- Main menus -->
-    <menuitem name="Teachers" id="menu_teachers" parent="menu_root" sequence="50"
+    <menuitem name="Teachers" id="menu_teachers" parent="menu_root" sequence="10"
         action="school_teacher_action" />
 
-    <menuitem name="Teaching" id="menu_teaching" parent="menu_root" sequence="75"
+    <menuitem name="Teaching" id="menu_teaching" parent="menu_root" sequence="30"
         action="school_teaching_action" />
 
     <!-- Configuration menus -->

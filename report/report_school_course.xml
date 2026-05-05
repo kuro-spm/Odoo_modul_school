@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Informes QWeb per a School Course -->
+        <record id="action_qweb_report_course" model="ir.actions.report">
+            <field name="name">Course Report</field>
+            <field name="model">school.course</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">school.report_course_template</field>
+            <field name="report_file">school.report_course_template</field>
+            <field name="model_id" ref="school.model_school_course" />
+            <field name="binding_model_id" ref="school.model_school_course" />
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="report_course_template">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family:sans-serif">
+                        <div class="text-end">
+                            <span t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}" />
+                        </div>
+                        <div class="text-center">
+                            <h1>COURSES</h1>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr align="left">
+                                    <th>Name</th>
+                                    <th>Hours</th>
+                                    <th>Manager</th>
+                                    <th>Phone</th>
+                                    <th>Thematic</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="docs" t-as="o">
+                                    <td>
+                                        <span t-field="o.name" />
+                                    </td>
+                                    <td>
+                                        <span t-field="o.hours" />
+                                    </td>
+                                    <td>
+                                        <span t-field="o.manager_id.display_name" />
+                                    </td>
+                                    <td>
+                                        <span t-field="o.manager_phone" />
+                                    </td>
+                                    <td>
+                                        <span t-field="o.thematic_id.name" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

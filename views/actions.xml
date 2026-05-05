@@ -54,5 +54,16 @@
         <field name="view_mode">list</field>
     </record>
 
+  <!--
+    <template id="template_course_report" name="Courses">
+        <t t-call="web.html.container"/>
+        <t t-call="web.external_layout"/>
+        <div class="page">
+            <div ></div>
+
+        </div>
+        
+    </template>
+-->
 
 </odoo>

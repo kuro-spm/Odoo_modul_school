@@ -25,6 +25,8 @@
         'views/teacher_views.xml',
         'views/thematic_views.xml',
         'views/teaching_views.xml',
+        'reports/report_school_course.xml',
+        'reports/report_school_teacher.xml',
      
     ],
     'demo': [],

@@ -17,6 +17,10 @@
     'website': 'http://www.infomila.info',
     'depends': ['base'],
     'data': [
+        #primer la seguretat.
+        'security/school_security.xml', #primer definim els grups
+        'security/ir.model.access.csv', #despres els permisos
+        #despres totes les actions, menus i vistes.
         'views/actions.xml',   # primer accions
         'views/menus.xml',     # després menús
         'views/course_views.xml',
@@ -25,7 +29,9 @@
         'views/teacher_views.xml',
         'views/thematic_views.xml',
         'views/teaching_views.xml',
+        'views/teacher_salary_views.xml',
         'reports/report_school_course.xml',
+        'reports/report_school_course_edition.xml',
         'reports/report_school_teacher.xml',
      
     ],

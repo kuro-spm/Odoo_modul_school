@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+classe_group,course.teacher,model_school_course,group_school_teacher,1,0,0,0

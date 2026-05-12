@@ -1,7 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 course_teacher,course.teacher,model_school_course,group_school_teacher,1,0,0,0
 course_edition_teacher,edition.teacher,model_school_course_edition,group_school_teacher,1,0,0,0
-subject_teacher,subject.teacher,model_school_subjectt,group_school_teacher,1,0,0,0
+subject_teacher,subject.teacher,model_school_subject,group_school_teacher,1,0,0,0
 thematic_teacher,thematic.teacher,model_school_thematic,group_school_teacher,1,0,0,0
 teacher_teacher,teacher.teacher,model_school_teacher,group_school_teacher,1,0,0,0
 teaching_teacher,teaching.teacher,model_school_teaching,group_school_teacher,1,0,0,0
@@ -10,7 +10,7 @@ salary_history_teacher,history.teacher,model_school_teacher_salary_history,group
 ,,,,,,,
 course_manager,course.manager,model_school_course,group_school_manager,1,1,1,1
 course_edition_manager,edition.manager,model_school_course_edition,group_school_manager,1,1,1,1
-subject_manager,subject.manager,model_school_subjectt,group_school_manager,1,1,1,1
+subject_manager,subject.manager,model_school_subject,group_school_manager,1,1,1,1
 thematic_manager,thematic.manager,model_school_thematic,group_school_manager,1,1,1,1
 teacher_manager,teacher.manager,model_school_teacher,group_school_manager,1,1,1,1
 teaching_manager,teaching.manager,model_school_teaching,group_school_manager,1,1,1,1

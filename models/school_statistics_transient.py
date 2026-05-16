@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from odoo import models, fields, drop_view_if_exists, _
+from odoo import models, fields, _
+from odoo.tools import drop_view_if_exists  # <-- Importació correcta en Odoo 18
+from odoo.exceptions import ValidationError
 from odoo.exceptions import ValidationError
 
 

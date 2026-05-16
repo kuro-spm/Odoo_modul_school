@@ -7,7 +7,7 @@
             sequence="99" />
 
         <record model="ir.ui.view" id="view_school_wizard_count_editions">
-            <field name="name">school.wizard.count.editions</field>
+            <field name="name">school.how.many.editions.between.dates.form</field>
             <field name="model">school.how.many.editions.between.dates</field>
             <field name="arch" type="xml">
                 <form string="Count Editions Between Dates">

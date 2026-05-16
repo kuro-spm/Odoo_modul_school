@@ -18,3 +18,6 @@ course_subject_manager,course.subject.manager,model_school_course_subject,group_
 salary_history_manager,history.manager,model_school_teacher_salary_history,group_school_manager,1,0,1,0
 ,,,,,,,
 statistics_manager,statistics.manager,model_school_statistics,group_school_manager,1,0,0,0
+,,,,,,,
+wizard_how_editions_teacher,wizard.how.editions.teacher,model_school_how_many_editions_between_dates,group_school_teacher,1,1,1,0
+wizard_how_editions_manager,wizard.how.editions.manager,model_school_how_many_editions_between_dates,group_school_manager,1,1,1,1

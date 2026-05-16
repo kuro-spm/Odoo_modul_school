@@ -1,0 +1,70 @@
+<odoo>
+    <data>
+
+        <menuitem name="Wizards"
+            id="menu_school_wizards"
+            parent="menu_configuration"
+            sequence="99" />
+
+        <record model="ir.ui.view" id="view_school_wizard_count_editions">
+            <field name="name">school.wizard.count.editions</field>
+            <field name="model">school.how.many.editions.between.dates</field>
+            <field name="arch" type="xml">
+                <form string="Count Editions Between Dates">
+                    <header>
+                        <!-- El camp state al header ja està carregat a la UI gràcies al widget statusbar -->
+                        <field name="state" widget="statusbar" statusbar_visible="init,done" />
+                    </header>
+                    <sheet>
+
+                        <!-- SECCIÓ DE FILTRES: Pertany exclusivament a l'estat 'init' -->
+                        <!-- S'oculta si l'estat de l'assistent és diferent de 'init' -->
+                        <group name="filters_section" invisible="state != 'init'">
+                            <group colspan="4">
+                                <field name="course_id" widget="selection" />
+                            </group>
+                            <group>
+                                <field name="start_date_from" />
+                            </group>
+                            <group>
+                                <group>
+                                    <field name="start_date_until" />
+                                </group>
+                            </group>
+                        </group>
+
+                        <!-- SECCIÓ DE RESULTATS: Pertany exclusivament a l'estat 'done' -->
+                        <!-- S'oculta si l'estat de l'assistent és diferent de 'done' -->
+                        <group name="result_section" invisible="state != 'done'">
+                            <field name="n_editions" readonly="1" />
+                        </group>
+
+                        <!-- PESTANYA DE BOTONS (FOOTER) -->
+                        <footer>
+                            <!-- Botons propis de la fase de configuració (estat 'init') -->
+                            <button string="Execute" name="count_editions" type="object" class="btn-primary" invisible="state != 'init'" />
+                            <button string="Cancel" special="cancel" class="btn-secondary" invisible="state != 'init'" />
+
+                            <!-- Botons propis de la fase de resultat final (estat 'done') -->
+                            <button string="Close" special="cancel" class="btn-primary" invisible="state != 'done'" />
+                        </footer>
+                        <!-- <field name="state" invisible="1"/>-->
+                        <!-- Si no l'haguessim posat en el header, el podriem tenir aquí "invisible" -->
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_school_wizard_count_editions">
+            <field name="name">How many editions between dates</field>
+            <field name="res_model">school.how.many.editions.between.dates</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="How many editions between dates" id="menu_school_wizard_count_editions"
+            parent="menu_school_wizards" action="action_school_wizard_count_editions" />
+
+
+    </data>
+</odoo>

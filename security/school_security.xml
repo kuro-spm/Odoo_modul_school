@@ -27,6 +27,7 @@
         </record>
     </data>
 
+    <!--Gairebé tots els mòduls tenen un grup on té tots els permissos-->
     <!-- Per assignar el group "manager" a l'usuari "admin" -->
     <function model="res.users" name="write">
         <value eval="[ref('base.user_admin')]" />

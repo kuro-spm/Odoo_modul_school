@@ -1,138 +1,139 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <!-- Informes QWeb per a School Teacher -->
-        <record id="action_qweb_teacher_card" model="ir.actions.report">
-            <field name="name">Teacher Card</field>
-            <field name="model">school.teacher</field>
-            <field name="report_type">qweb-pdf</field>
-            <field name="report_name">school.report_teacher_card_template</field>
-            <field name="report_file">school.report_teacher_card_template</field>
-            <field name="model_id" ref="school.model_school_teacher" />
-            <field name="binding_model_id" ref="school.model_school_teacher" />
-            <field name="binding_type">report</field>
-        </record>
+    <!-- Informes QWeb per a School Teacher -->
+    <record id="action_qweb_teacher_card" model="ir.actions.report">
+        <field name="name">Teacher Card</field>
+        <field name="model">school.teacher</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">school.report_teacher_card_template</field>
+        <field name="report_file">school.report_teacher_card_template</field>
+        <field name="model_id" ref="school.model_school_teacher" />
+        <field name="binding_model_id" ref="school.model_school_teacher" />
+        <field name="binding_type">report</field>
+    </record>
 
-        <template id="report_teacher_card_template">
-            <t t-call="web.html_container">
-                <t t-foreach="docs" t-as="o">
-                    <t t-call="web.external_layout">
-                        <div class="page" style="font-family:sans-serif">
-                            <div class="text-end">
-                                <span t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}" />
-                            </div>
-                            <div class="text-center">
-                                <h1>TEACHER</h1>
-                            </div>
-                            <table class="table table-condensed table-borderless">
+    <template id="report_teacher_card_template">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page" style="font-family:sans-serif">
+                        <!--Inici del report-->
+
+                        <div class="text-end">
+                            <span t-esc="datetime.datetime.now()" t-options="{'widget': 'datetime'}" />
+                        </div>
+                        <div class="text-center">
+                            <h1>TEACHER</h1>
+                        </div>
+                        <table class="table table-condensed table-borderless">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <strong>Name:</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="o.display_name" />
+                                    </td>
+                                    <td>
+                                        <strong>TIN:</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="o.tin" />
+                                    </td>
+                                    <t t-if="o.photo">
+                                        <td rowspan="4">
+                                            <img height="180" t-attf-src="data:image/*;base64,{{o.photo}}" />
+                                        </td>
+                                    </t>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Birthdate:</strong>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.birthdate" />
+                                    </td>
+                                    <td>
+                                        <strong>Age:</strong>
+                                    </td>
+                                    <td>
+                                        <span t-field="o.age" />
+                                    </td>
+                                    <td>
+                                        <strong>eMail:</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="o.email" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Gender:</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="o.gender" />
+                                    </td>
+                                    <td>
+                                        <strong>Phone:</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="o.phone" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <strong>Citizenship:</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="o.country_id" />
+                                    </td>
+                                    <td>
+                                        <strong>Salary:</strong>
+                                    </td>
+                                    <td colspan="3">
+                                        <span t-field="o.salary" />
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <t t-if="len(o.subject_ids)>0">
+                            <h3>
+                                <u>Subjects authorized</u>
+                            </h3>
+                            <table class="table table-condensed">
+                                <thead>
+                                    <tr align="left">
+                                        <th>Name</th>
+                                        <th>Hours</th>
+                                        <th>Active?</th>
+                                    </tr>
+                                </thead>
                                 <tbody>
-                                    <tr>
+                                    <tr t-foreach="o.subject_ids" t-as="s">
                                         <td>
-                                            <strong>Name:</strong>
-                                        </td>
-                                        <td colspan="3">
-                                            <span t-field="o.display_name" />
+                                            <span t-field="s.name" />
                                         </td>
                                         <td>
-                                            <strong>TIN:</strong>
+                                            <span t-field="s.hours" />
                                         </td>
-                                        <td colspan="3">
-                                            <span t-field="o.tin" />
-                                        </td>
-                                        <t t-if="o.photo">
-                                            <td rowspan="4">
-                                                <img height="180" t-attf-src="data:image/*;base64,{{o.photo}}" />
-                                            </td>
+                                        <t t-if="s.active">
+                                            <td>Yes</td>
                                         </t>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Birthdate:</strong>
-                                        </td>
-                                        <td>
-                                            <span t-field="o.birthdate" />
-                                        </td>
-                                        <td>
-                                            <strong>Age:</strong>
-                                        </td>
-                                        <td>
-                                            <span t-field="o.age" />
-                                        </td>
-                                        <td>
-                                            <strong>eMail:</strong>
-                                        </td>
-                                        <td colspan="3">
-                                            <span t-field="o.email" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Gender:</strong>
-                                        </td>
-                                        <td colspan="3">
-                                            <span t-field="o.gender" />
-                                        </td>
-                                        <td>
-                                            <strong>Phone:</strong>
-                                        </td>
-                                        <td colspan="3">
-                                            <span t-field="o.phone" />
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Citizenship:</strong>
-                                        </td>
-                                        <td colspan="3">
-                                            <span t-field="o.country_id" />
-                                        </td>
-                                        <td>
-                                            <strong>Salary:</strong>
-                                        </td>
-                                        <td colspan="3">
-                                            <span t-field="o.salary" />
-                                        </td>
+                                        <t t-else="">
+                                            <td>No</td>
+                                        </t>
                                     </tr>
                                 </tbody>
                             </table>
-
-                            <t t-if="len(o.subject_ids)>0">
-                                <h3>
-                                    <u>Subjects authorized</u>
-                                </h3>
-                                <table class="table table-condensed">
-                                    <thead>
-                                        <tr align="left">
-                                            <th>Name</th>
-                                            <th>Hours</th>
-                                            <th>Active?</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr t-foreach="o.subject_ids" t-as="s">
-                                            <td>
-                                                <span t-field="s.name" />
-                                            </td>
-                                            <td>
-                                                <span t-field="s.hours" />
-                                            </td>
-                                            <t t-if="s.active">
-                                                <td>Yes</td>
-                                            </t>
-                                            <t t-else="">
-                                                <td>No</td>
-                                            </t>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </t>
-                            <t t-else="">
-                                <u>This teacher has no authorized subjects</u>
-                            </t>
-                        </div>
-                    </t>
+                        </t>
+                        <t t-else="">
+                            <u>This teacher has no authorized subjects</u>
+                        </t>
+                        <!--Final del report-->
+                    </div>
                 </t>
             </t>
-        </template>
-    </data>
+        </t>
+    </template>
 </odoo>

@@ -62,8 +62,10 @@
             <field name="target">new</field>
         </record>
 
-        <menuitem name="How many editions between dates" id="menu_school_wizard_count_editions"
-            parent="menu_school_wizards" action="action_school_wizard_count_editions" />
+        <menuitem name="How many editions between dates"
+            id="menu_school_wizard_count_editions"
+            parent="menu_school_wizards"
+            action="action_school_wizard_count_editions" />
 
 
     </data>

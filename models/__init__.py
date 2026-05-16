@@ -11,4 +11,6 @@ from . import school_course_edition
 from . import school_teaching
 from . import school_teacher_salary_history
 
+from . import school_statistics_transient
+
 #Recordatori: En cas de

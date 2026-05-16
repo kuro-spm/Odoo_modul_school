@@ -7,7 +7,7 @@ from odoo.exceptions import ValidationError
 #També està bé posar delete="0" i create="0" a les vistes.
 #_auto=False  fa que no es crei la taula a la base de dades!
 class SchoolStatistics(models.Model):
-    _name = 'School Statistics'
+    _name = 'school.statistics'
     _description = 'SchoolStatistics management'
     _auto=False  #_auto=False  fa que no es crei la taula a la base de dades!
     _order='year desc, qty_editions desc, course_name'

@@ -34,6 +34,7 @@
         'reports/report_school_course_edition.xml',
         'reports/report_school_teacher.xml',
         'wizard/how_many_editions_between_dates.xml',
+        'dashboards/school_dashboards.xml'
      
     ],
     'demo': [],

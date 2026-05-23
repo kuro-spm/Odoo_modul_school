@@ -7,8 +7,15 @@
     <menuitem name="Configuration" id="menu_configuration" parent="menu_root" sequence="99" />
 
     <!-- Main menus -->
-    <menuitem name="Teachers" id="menu_teachers" parent="menu_root" sequence="10"
-        action="school_teacher_action" />
+    <!--<menuitem name="Teachers" id="menu_teachers" parent="menu_root" sequence="10" action="school_teacher_action" />-->
+
+    <menuitem name="Teachers (Manager)" id="menu_teachers_manager" parent="menu_root" sequence="10"
+        action="school_teacher_action_manager"
+        groups="group_school_manager" />
+
+    <menuitem name="Teachers" id="menu_teachers_no_manager" parent="menu_root" sequence="11"
+        action="school_teacher_action_no_manager"
+        groups="group_school_teacher" />
 
     <menuitem name="Teaching" id="menu_teaching" parent="menu_root" sequence="30"
         action="school_teaching_action" />

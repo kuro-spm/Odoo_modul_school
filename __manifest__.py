@@ -15,7 +15,7 @@
     """,
     'author': 'Group DAM2 - Course 2025-2026',
     'website': 'http://www.infomila.info',
-    'depends': ['base'],
+    'depends': ['base', 'board'],
     'data': [
         #primer la seguretat.
         'security/school_security.xml', #primer definim els grups

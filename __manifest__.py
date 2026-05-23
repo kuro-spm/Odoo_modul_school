@@ -37,7 +37,10 @@
         'dashboards/school_dashboards.xml',
      
     ],
-    'demo': [],
+    'demo': [
+        #'data/school_demo.xml',        #no provat
+        #'data/school_images_demo.xml'  #no provat
+    ],
     'installable': True,
     'application': True,
     'license': 'LGPL-3',

@@ -1,0 +1,805 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0-20250901\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-19 14:14+0000\n"
+"PO-Revision-Date: 2026-05-19 16:29+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: ca_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.9\n"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_statistics__qty_editions
+msgid "# Editions"
+msgstr "# Edicions"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__n_editions
+msgid "#Editions"
+msgstr "#Edicions"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<strong>Age:</strong>"
+msgstr "<strong>Edat:</strong>"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<strong>Birthdate:</strong>"
+msgstr "<strong>Data de naixement</strong>"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<strong>Citizenship:</strong>"
+msgstr "<strong>Nacionalitat:</strong>"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<strong>Gender:</strong>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<strong>Name:</strong>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<strong>Phone:</strong>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<strong>Salary:</strong>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<strong>TIN:</strong>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<strong>eMail:</strong>"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<u>Subjects authorized</u>"
+msgstr "<u>Assignatures autoritzades</u>"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "<u>This teacher has no authorized subjects</u>"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__active
+#: model:ir.model.fields,field_description:school.field_school_subject__active
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_search
+msgid "Active"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__active
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "Active?"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__age
+msgid "Age"
+msgstr "Edat"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__age_celebrated
+msgid "Age celebrated"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_search
+msgid "Archived"
+msgstr "Archivat"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_teacher_form
+msgid "Authorized Subjects"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teaching__subject_teacher_ids
+#: model_terms:ir.ui.view,arch_db:school.school_subject_form
+msgid "Authorized Teachers"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__birthdate
+msgid "Birthdate"
+msgstr "Data de naixement"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__birthday
+msgid "Birthday"
+msgstr "Aniversari"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_course_template
+msgid "COURSES"
+msgstr "CURSOS"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_wizard_count_editions
+msgid "Cancel"
+msgstr "Cancel·la"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_thematic__child_ids
+#: model_terms:ir.ui.view,arch_db:school.school_thematic_form
+msgid "Child Thematics"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__manager_citizenship
+#: model:ir.model.fields,field_description:school.field_school_teacher__country_id
+msgid "Citizenship"
+msgstr "Nacionalitat"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_wizard_count_editions
+msgid "Close"
+msgstr "Tanca"
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_configuration
+msgid "Configuration"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_wizard_count_editions
+msgid "Count Editions Between Dates"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course_edition__course_id
+#: model:ir.model.fields,field_description:school.field_school_course_subject__course_id
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__course_id
+#: model:ir.model.fields,field_description:school.field_school_statistics__course_name
+#: model:ir.model.fields,field_description:school.field_school_teaching__course_edition_course_id
+#: model_terms:ir.ui.view,arch_db:school.school_course_form
+msgid "Course"
+msgstr "Curs"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_course_edition_form
+msgid "Course Edition"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.school_course_edition_action
+#: model:ir.ui.menu,name:school.menu_course_edition
+#: model_terms:ir.ui.view,arch_db:school.school_course_form
+msgid "Course Editions"
+msgstr "Edicions del curs"
+
+#. module: school
+#: model:ir.model,name:school.model_school_course_edition
+msgid "Course Editions Management"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.report,name:school.action_qweb_report_course_editions
+msgid "Course Editions Report"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_school_course
+msgid "Course Management"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.report,name:school.action_qweb_report_course
+msgid "Course Report"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_school_course_subject
+msgid "Course Subject Rel Management"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course_edition__name
+msgid "Course edition"
+msgstr "Edició del curs"
+
+#. module: school
+#: model:ir.actions.act_window,name:school.school_course_action
+#: model:ir.model.fields,field_description:school.field_school_subject__course_subject_ids
+#: model:ir.model.fields,field_description:school.field_school_teacher__course_ids
+#: model:ir.model.fields,field_description:school.field_school_thematic__course_ids
+#: model:ir.ui.menu,name:school.menu_courses
+#: model_terms:ir.ui.view,arch_db:school.school_course_list
+#: model_terms:ir.ui.view,arch_db:school.school_subject_form
+#: model_terms:ir.ui.view,arch_db:school.school_thematic_form
+msgid "Courses"
+msgstr "Cursos"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__create_uid
+#: model:ir.model.fields,field_description:school.field_school_course_edition__create_uid
+#: model:ir.model.fields,field_description:school.field_school_course_subject__create_uid
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__create_uid
+#: model:ir.model.fields,field_description:school.field_school_subject__create_uid
+#: model:ir.model.fields,field_description:school.field_school_teacher__create_uid
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__create_uid
+#: model:ir.model.fields,field_description:school.field_school_teaching__create_uid
+#: model:ir.model.fields,field_description:school.field_school_thematic__create_uid
+msgid "Created by"
+msgstr "Creat per"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__create_date
+#: model:ir.model.fields,field_description:school.field_school_course_edition__create_date
+#: model:ir.model.fields,field_description:school.field_school_course_subject__create_date
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__create_date
+#: model:ir.model.fields,field_description:school.field_school_subject__create_date
+#: model:ir.model.fields,field_description:school.field_school_teacher__create_date
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__create_date
+#: model:ir.model.fields,field_description:school.field_school_teaching__create_date
+#: model:ir.model.fields,field_description:school.field_school_thematic__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__date
+msgid "Date"
+msgstr "Data"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__display_name
+#: model:ir.model.fields,field_description:school.field_school_course_edition__display_name
+#: model:ir.model.fields,field_description:school.field_school_course_subject__display_name
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__display_name
+#: model:ir.model.fields,field_description:school.field_school_statistics__display_name
+#: model:ir.model.fields,field_description:school.field_school_subject__display_name
+#: model:ir.model.fields,field_description:school.field_school_teacher__display_name
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__display_name
+#: model:ir.model.fields,field_description:school.field_school_teaching__display_name
+#: model:ir.model.fields,field_description:school.field_school_thematic__display_name
+msgid "Display Name"
+msgstr "Nom"
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_how_many_editions_between_dates__state__done
+msgid "Done"
+msgstr "Fet"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teaching__edition_id
+#: model_terms:ir.ui.view,arch_db:school.school_course_edition_form_calendar
+msgid "Edition"
+msgstr "Edició"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_course_edition_calendar
+msgid "Edition name"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__course_edition_ids
+msgid "Editions"
+msgstr "Edicions"
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_thematic.py:0
+msgid "Error! You cannot create infinite recursive topics."
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_school_wizard_count_editions
+msgid "Execute"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_teacher__gender__female
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_search
+msgid "Female"
+msgstr "Dona"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course_edition__date_stop
+msgid "Finish Date"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__first_name
+msgid "First Name"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_list
+msgid "Full name"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__gender
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_search
+msgid "Gender"
+msgstr "Gènere"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__hours
+#: model:ir.model.fields,field_description:school.field_school_course_subject__subject_hours
+#: model:ir.model.fields,field_description:school.field_school_subject__hours
+#: model_terms:ir.ui.view,arch_db:school.report_course_template
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "Hours"
+msgstr "Hores"
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_course.py:0
+#: code:addons/school/models/school_subject.py:0
+msgid "Hours must be positive."
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.action_school_wizard_count_editions
+#: model:ir.ui.menu,name:school.menu_school_wizard_count_editions
+msgid "How many editions between dates"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__id
+#: model:ir.model.fields,field_description:school.field_school_course_edition__id
+#: model:ir.model.fields,field_description:school.field_school_course_subject__id
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__id
+#: model:ir.model.fields,field_description:school.field_school_statistics__id
+#: model:ir.model.fields,field_description:school.field_school_subject__id
+#: model:ir.model.fields,field_description:school.field_school_teacher__id
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__id
+#: model:ir.model.fields,field_description:school.field_school_teaching__id
+#: model:ir.model.fields,field_description:school.field_school_thematic__id
+msgid "ID"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_how_many_editions_between_dates__state__init
+msgid "Init"
+msgstr ""
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_teacher_salary_history.py:0
+msgid "Is not possible to delete a salary history."
+msgstr ""
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_course_edition.py:0
+#: model:ir.model.constraint,message:school.constraint_school_course_edition_unique_course_date_start
+msgid ""
+"Its not possible 2 course editions with same course and same date start"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__last_name
+msgid "Last Name"
+msgstr "Cognom"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__write_uid
+#: model:ir.model.fields,field_description:school.field_school_course_edition__write_uid
+#: model:ir.model.fields,field_description:school.field_school_course_subject__write_uid
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__write_uid
+#: model:ir.model.fields,field_description:school.field_school_subject__write_uid
+#: model:ir.model.fields,field_description:school.field_school_teacher__write_uid
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__write_uid
+#: model:ir.model.fields,field_description:school.field_school_teaching__write_uid
+#: model:ir.model.fields,field_description:school.field_school_thematic__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__write_date
+#: model:ir.model.fields,field_description:school.field_school_course_edition__write_date
+#: model:ir.model.fields,field_description:school.field_school_course_subject__write_date
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__write_date
+#: model:ir.model.fields,field_description:school.field_school_subject__write_date
+#: model:ir.model.fields,field_description:school.field_school_teacher__write_date
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__write_date
+#: model:ir.model.fields,field_description:school.field_school_teaching__write_date
+#: model:ir.model.fields,field_description:school.field_school_thematic__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_teacher__gender__male
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_search
+msgid "Male"
+msgstr "Home"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_teacher_form
+msgid "Managed Courses"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__manager_id
+#: model:res.groups,name:school.group_school_manager
+#: model_terms:ir.ui.view,arch_db:school.report_course_template
+#: model_terms:ir.ui.view,arch_db:school.school_course_form
+msgid "Manager"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course_edition__n_teachers
+msgid "N. Teachers"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__name
+#: model:ir.model.fields,field_description:school.field_school_subject__name
+#: model:ir.model.fields,field_description:school.field_school_thematic__name
+#: model_terms:ir.ui.view,arch_db:school.report_course_template
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "Name"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "No"
+msgstr "No"
+
+#. module: school
+#: model:res.groups,name:school.group_school_nothing
+msgid "Nothing"
+msgstr "Res"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__n_manager
+msgid "Num. courses"
+msgstr "Núm. Cursos"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__n_subject
+msgid "Num. subject"
+msgstr "Núm. Assignatures"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__n_teaching
+msgid "Num. teaching"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course_subject__number
+msgid "Number"
+msgstr "Número"
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_course_subject.py:0
+msgid "Number must be positive."
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields.selection,name:school.selection__school_teacher__gender__other
+msgid "Other"
+msgstr "Altres"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_teacher_form
+msgid "Other data"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_thematic__parent_id
+msgid "Parent Thematic"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.view_teacher_form
+msgid "Personal data"
+msgstr "Informació personal"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__manager_phone
+#: model:ir.model.fields,field_description:school.field_school_teacher__phone
+#: model_terms:ir.ui.view,arch_db:school.report_course_template
+msgid "Phone"
+msgstr "Telèfon"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__photo
+msgid "Photo"
+msgstr "Foto"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__salary
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__salary
+msgid "Salary"
+msgstr "Salari"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_search
+msgid "Salary <3000"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_search
+msgid "Salary >=3000"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_salary_history_list
+msgid "Salary History"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_school_teacher_salary_history
+msgid "Salary History Management"
+msgstr ""
+
+#. module: school
+#: model:ir.model.constraint,message:school.constraint_school_teacher_ck_salari
+msgid "Salary must be positive (controlled by BD)"
+msgstr ""
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_teacher.py:0
+msgid "Salary must be positive."
+msgstr ""
+
+#. module: school
+#: model:ir.module.category,name:school.module_category_school
+#: model:ir.ui.menu,name:school.menu_root
+msgid "School"
+msgstr "Escola"
+
+#. module: school
+#: model:ir.model,name:school.model_school_statistics
+msgid "SchoolStatistics management"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_search
+msgid "Search Teacher"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course_edition__date_start
+msgid "Start Date"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__start_date_from
+msgid "Start Date From"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__start_date_until
+msgid "Start Date Until"
+msgstr ""
+
+#. module: school
+#. odoo-python
+#: code:addons/school/wizard/how_many_editions_between_dates.py:0
+msgid "Start Date Until must be later or equal Start Date From"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_how_many_editions_between_dates__state
+msgid "State"
+msgstr "Provincia"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course_subject__subject_id
+#: model:ir.model.fields,field_description:school.field_school_teaching__subject_id
+#: model_terms:ir.ui.view,arch_db:school.school_subject_form
+msgid "Subject"
+msgstr "Assignatura"
+
+#. module: school
+#: model:ir.model,name:school.model_school_subject
+msgid "Subject Management"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.school_subject_action
+#: model:ir.model.fields,field_description:school.field_school_course__course_subject_ids
+#: model:ir.ui.menu,name:school.menu_subjects
+#: model_terms:ir.ui.view,arch_db:school.school_course_form
+#: model_terms:ir.ui.view,arch_db:school.school_subject_list
+#: model_terms:ir.ui.view,arch_db:school.view_teacher_form
+msgid "Subjects"
+msgstr "Assignatures"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__subject_ids
+msgid "Subjects authorized"
+msgstr "Assignatures autoritzades"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__summary
+#: model_terms:ir.ui.view,arch_db:school.school_course_form
+msgid "Summary"
+msgstr "Resum"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "TEACHER"
+msgstr "PROFESSOR"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher__tin
+msgid "Tax ID"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__teacher_id
+#: model:ir.model.fields,field_description:school.field_school_teaching__teacher_id
+#: model:res.groups,name:school.group_school_teacher
+#: model_terms:ir.ui.view,arch_db:school.school_course_form
+msgid "Teacher"
+msgstr "Professor"
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_teacher.py:0
+msgid ""
+"Teacher '%s' cannot be deleted because this teacher is manager of %s "
+"courses."
+msgstr ""
+
+#. module: school
+#: model:ir.actions.report,name:school.action_qweb_teacher_card
+msgid "Teacher Card"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_school_teacher
+msgid "Teacher Management"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.school_teacher_salary_history_action
+#: model:ir.ui.menu,name:school.menu_teacher_salary_history
+msgid "Teacher Salary History"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.school_teacher_action
+#: model:ir.ui.menu,name:school.menu_teachers
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_graph
+#: model_terms:ir.ui.view,arch_db:school.school_teacher_list
+msgid "Teachers"
+msgstr "Professors"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_subject__teacher_ids
+msgid "Teachers authorized"
+msgstr "Professors autoritzats"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_course_edition_calendar
+msgid "Teachers count"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.school_teaching_action
+#: model:ir.ui.menu,name:school.menu_teaching
+#: model_terms:ir.ui.view,arch_db:school.school_teaching_list
+msgid "Teaching"
+msgstr ""
+
+#. module: school
+#: model:ir.model,name:school.model_school_teaching
+msgid "Teaching Management"
+msgstr ""
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_course_edition.py:0
+msgid "The finish date cannot be earlier than the start date."
+msgstr ""
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_course_subject.py:0
+#: model:ir.model.constraint,message:school.constraint_school_course_subject_course_number_unique
+msgid "The number in a course must be unique!"
+msgstr ""
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_course_subject.py:0
+#: model:ir.model.constraint,message:school.constraint_school_course_subject_course_subject_unique
+msgid "The subject in a course must be unique!"
+msgstr ""
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_teacher.py:0
+msgid "The teacher's email is invalid."
+msgstr ""
+
+#. module: school
+#. odoo-python
+#: code:addons/school/models/school_teacher.py:0
+msgid "The teacher's phone number can only contain digits."
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__thematic_id
+#: model_terms:ir.ui.view,arch_db:school.report_course_template
+#: model_terms:ir.ui.view,arch_db:school.school_thematic_form
+msgid "Thematic"
+msgstr "Temàtica"
+
+#. module: school
+#: model:ir.model,name:school.model_school_thematic
+msgid "Thematic Management"
+msgstr ""
+
+#. module: school
+#: model:ir.actions.act_window,name:school.school_thematic_action
+#: model:ir.ui.menu,name:school.menu_thematics
+#: model_terms:ir.ui.view,arch_db:school.school_thematic_list
+msgid "Thematics"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__time_f
+msgid "Time-F"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__time_s
+msgid "Time-S"
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_teacher_salary_history__user_id
+msgid "User"
+msgstr "Usuari"
+
+#. module: school
+#: model:ir.model,name:school.model_school_how_many_editions_between_dates
+msgid "Wizard to count editions between dates"
+msgstr ""
+
+#. module: school
+#: model:ir.ui.menu,name:school.menu_school_wizards
+msgid "Wizards"
+msgstr ""
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.school_subject_form
+msgid "Write subject's name..."
+msgstr ""
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_statistics__year
+msgid "Year"
+msgstr "Any"
+
+#. module: school
+#: model_terms:ir.ui.view,arch_db:school.report_teacher_card_template
+msgid "Yes"
+msgstr "Sí"
+
+#. module: school
+#: model:ir.model.fields,field_description:school.field_school_course__manager_email
+#: model:ir.model.fields,field_description:school.field_school_teacher__email
+msgid "eMail"
+msgstr "e-mail"
